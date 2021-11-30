@@ -6,7 +6,7 @@
 #    By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/15 22:24:05 by thhusser          #+#    #+#              #
-#    Updated: 2021/11/29 17:39:51 by thhusser         ###   ########.fr        #
+#    Updated: 2021/11/30 18:12:01 by thhusser         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,32 +25,13 @@ SRCS		= $(addprefix ./srcs/, ${SRCS_FILES})
 
 SRCS_FILES	= \
 				main.c \
-				parsers/parse_input.c \
-				parsers/map/parse_map.c \
-				parsers/map/check_borders.c \
-				parsers/map/check_walls.c \
-				parsers/parameters/parse_line_resolution.c \
-				parsers/parameters/parse_line_paths.c \
-				utils/is_in_charset.c \
-				utils/ft_is_number.c \
-				utils/number_of_args.c \
-				utils/dual_realloc.c \
-				utils/detect_line_map.c \
-				utils/append_error.c \
-				utils/show_errors.c \
-				init/init_global_struct.c \
-				free/free_everything.c \
-				free/free_mlx.c \
-				list_map.c \
-				images.c \
-				window.c \
-				textures.c \
-				key_event.c \
-				print_data/print.c \
-				player.c \
-				print_pxl.c \
-				error.c
-				
+				render.c cast_hz.c cast_vt.c cast_ray.c \
+		  		utils.c key_events.c parsing.c \
+		 		player.c texture.c grid.c utils_parsing.c \
+				grid_parsing.c colors.c resolution.c images.c \
+				window.c utils_init.c sprites.c \
+				utils_sprites.c utils_render.c render_sprites.c \
+				save.c utils_colors.c
 
 
 CC			=	clang
@@ -81,9 +62,9 @@ $(NAME): 	${OBJS}
 
 exec:		${NAME}
 			@clear
-			@echo "Creating and executing ./cub3D"
+			@echo "Creating and executing ./$(NAME)"
 			@echo "#####################################"
-#			@./${NAME} assets/small_map.cub
+			@./${NAME} assets/small_map.cub
 
 # execv:		${NAME}
 #			@$(CC) $(FLAGS) -g $(HEADER) $(OBJS) -o $(NAME) -L ${PATH_LIBFT} -lft -L ${PATH_MLX} -lmlx -lXext -lX11 -lm

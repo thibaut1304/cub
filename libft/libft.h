@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 01:14:22 by thhusser          #+#    #+#             */
-/*   Updated: 2020/11/04 01:14:22 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/11/30 17:55:54 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <limits.h>
 
 # define _NC "\033[00m"
 # define _RED "\033[0;31m"
@@ -106,5 +107,6 @@ void		ft_lstclear(t_list **lst, void (*del)(void*));
 void		ft_lstiter(t_list *lst, void (*f)(void *));
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *),
 				void (*del)(void *));
+void		ft_del_list(void *grid);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 17:30:16 by thhusser          #+#    #+#             */
-/*   Updated: 2020/11/04 17:30:16 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/11/30 17:10:35 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,34 +43,6 @@ static int	ft_sign(const char *str)
 	return (sign);
 }
 
-static int	ft_atoi_plus(int sign, int i, const char *str)
-{
-	int	nb;
-
-	nb = 0;
-	while (str[i] == '9')
-	{
-		nb++;
-		i++;
-	}
-	if (nb >= 19 && sign == 0)
-		return (-1);
-	else if (nb >= 19 && sign > 0)
-		return (0);
-	i -= nb;
-	nb = 0;
-	while (ft_number(str[i]))
-	{
-		nb++;
-		i++;
-	}
-	if (nb > 19 && sign == 0)
-		return (-1);
-	else if (nb > 19 && sign > 0)
-		return (0);
-	return (2);
-}
-
 int	ft_atoi(const char *str)
 {
 	int			i;
@@ -87,14 +59,10 @@ int	ft_atoi(const char *str)
 		return (0);
 	while (*str == '-' || *str == '+')
 		str++;
-	result = ft_atoi_plus(sign, i, str);
-	if (result == 2)
-	{
-		result = 0;
-		while (ft_number(str[i]))
-			result = (str[i++] - 48) + result * 10;
-		if ((sign % 2))
-			result = -result;
-	}
+	result = 0;
+	while (ft_number(str[i]))
+		result = (str[i++] - 48) + result * 10;
+	if ((sign % 2))
+		result = -result;
 	return (result);
 }
