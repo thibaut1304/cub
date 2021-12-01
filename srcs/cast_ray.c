@@ -44,7 +44,7 @@ float	find_ray_hit(float hz_dist, float vt_dist, float hz_hit, float vt_hit)
 ** Finally find the texture related to the ray. FLT_MAX is highest float value.
 */
 
-t_ray	cast(t_ray ray, t_cub *cub)
+t_ray	cast(t_ray ray, t_global *cub)
 {
 	float		hz_dist;
 	float		vt_dist;
@@ -74,7 +74,7 @@ t_ray	cast(t_ray ray, t_cub *cub)
 ** Init each ray with his own angle and save all the data of his cast.
 */
 
-void	cast_all_rays(t_cub *cub)
+void	cast_all_rays(t_global *cub)
 {
 	float	ray_ang;
 	int		i;

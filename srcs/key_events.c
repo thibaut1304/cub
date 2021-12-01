@@ -1,7 +1,7 @@
 
 #include "../includes/cub.h"
 
-int		key_pressed(int key, t_cub *cub)
+int		key_pressed(int key, t_global *cub)
 {
 	if (key == KEY_Z || key == KEY_UP || key == KEY_W)
 		cub->player.walk_d = 1;

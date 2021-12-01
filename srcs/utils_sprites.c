@@ -6,7 +6,7 @@
 ** won't be in the FOV of our player, then can't be visible.
 */
 
-void	is_visible(t_cub *cub, int i)
+void	is_visible(t_global *cub, int i)
 {
 	float angle;
 
@@ -22,7 +22,7 @@ void	is_visible(t_cub *cub, int i)
 		cub->sprt[i].visibility = 0;
 }
 
-float	find_angle(t_cub *cub, int i)
+float	find_angle(t_global *cub, int i)
 {
 	float	delta_x;
 	float	delta_y;
@@ -39,7 +39,7 @@ float	find_angle(t_cub *cub, int i)
 ** them in the good order.
 */
 
-void	sort_sprt(t_cub *cub)
+void	sort_sprt(t_global *cub)
 {
 	t_sprt		tmp;
 	int			i;

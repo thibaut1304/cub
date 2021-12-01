@@ -12,7 +12,7 @@ void	init_img(t_img *img)
 	img->hei = 0;
 }
 
-void	free_img(t_cub *cub)
+void	free_img(t_global *cub)
 {
 	mlx_destroy_image(cub->win.mlx_p, cub->win.img.img);
 	cub->win.img.img = NULL;

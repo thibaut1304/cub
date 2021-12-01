@@ -6,7 +6,7 @@
 ** to have it in the good order.
 */
 
-int		fill_list_grid(t_cub *cub, char *line, t_list **list)
+int		fill_list_grid(t_global *cub, char *line, t_list **list)
 {
 	t_list	*new_elem;
 
@@ -21,7 +21,7 @@ int		fill_list_grid(t_cub *cub, char *line, t_list **list)
 ** cub3d parameter. grid_flag is here to know when we reached map parameter.
 */
 
-int		line_data(t_cub *cub, char *line, t_list **list)
+int		line_data(t_global *cub, char *line, t_list **list)
 {
 	char		**data;
 
@@ -52,7 +52,7 @@ int		line_data(t_cub *cub, char *line, t_list **list)
 ** Last malloc and data attribution before loading the game.
 */
 
-int		last_load(t_cub *cub)
+int		last_load(t_global *cub)
 {
 	if (cub->win.wid >= 1)
 	{
@@ -71,7 +71,7 @@ int		last_load(t_cub *cub)
 ** Check if we have all the required parameters to load the game.
 */
 
-int		check_missing(t_cub *cub)
+int		check_missing(t_global *cub)
 {
 	if (!cub->data.grid_flag)
 		return (is_error("Map is missing"));
@@ -100,7 +100,7 @@ int		check_missing(t_cub *cub)
 ** Read the .cub file and analyse it line by line.
 */
 
-int		parsing(t_cub *cub, char *map_file, t_list **list)
+int		parsing(t_global *cub, char *map_file, t_list **list)
 {
 	int		fd;
 	int		valid;

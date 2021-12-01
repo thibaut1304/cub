@@ -5,7 +5,7 @@
 ** Render floor from bot pixel to window height.
 */
 
-void	render_floor(t_cub *cub, t_ray rays, int i)
+void	render_floor(t_global *cub, t_ray rays, int i)
 {
 	int j;
 
@@ -21,7 +21,7 @@ void	render_floor(t_cub *cub, t_ray rays, int i)
 ** Render ceil from 0 to top pixel position.
 */
 
-void	render_ceil(t_cub *cub, t_ray rays, int i)
+void	render_ceil(t_global *cub, t_ray rays, int i)
 {
 	int j;
 
@@ -35,7 +35,7 @@ void	render_ceil(t_cub *cub, t_ray rays, int i)
 ** pixel position of our texture then save the texture color to render it.
 */
 
-void	render_wall(t_cub *cub, int i, float wall_hei)
+void	render_wall(t_global *cub, int i, float wall_hei)
 {
 	float	text_x;
 	float	text_y;
@@ -64,7 +64,7 @@ void	render_wall(t_cub *cub, int i, float wall_hei)
 ** pixels columns by columns.
 */
 
-void	render_3d(t_cub *cub)
+void	render_3d(t_global *cub)
 {
 	float			wall_dist;
 	float			wall_hei;
@@ -92,15 +92,12 @@ void	render_3d(t_cub *cub)
 	}
 }
 
-int		render(t_cub *cub)
+int		render(t_global *cub)
 {
 	cast_all_rays(cub);
 	render_3d(cub);
 	render_sprt(cub);
-	if (!cub->save)
-	{
-		mlx_put_image_to_window(cub->win.mlx_p, cub->win.win_p,
-			cub->win.img.img, 0, 0);
-	}
+	mlx_put_image_to_window(cub->win.mlx_p, cub->win.win_p,
+		cub->win.img.img, 0, 0);
 	return (1);
 }

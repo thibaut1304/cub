@@ -118,7 +118,7 @@ int		check_char(char *line)
 ** Check if our RGB parameters has 2 ','
 */
 
-int		check_format(char *line, int total, char **colors, t_cub *cub)
+int		check_format(char *line, int total, char **colors, t_global *cub)
 {
 	int i;
 	int count;
@@ -157,7 +157,7 @@ int		check_params(char **colors)
 	return (1);
 }
 
-int		fill_rgb(t_cub *cub, char **colors, char *line)
+int		fill_rgb(t_global *cub, char **colors, char *line)
 {
 	int		i;
 	int		rgb;
@@ -184,7 +184,7 @@ int		fill_rgb(t_cub *cub, char **colors, char *line)
 	return (1);
 }
 
-int		fill_color(t_cub *cub, char *line)
+int		fill_color(t_global *cub, char *line)
 {
 	char	**colors;
 

@@ -6,22 +6,19 @@
 ** size.
 */
 
-void	check_res(t_cub *cub)
+void	check_res(t_global *cub)
 {
 	int x;
 	int y;
 
 	mlx_get_screen_size(cub->win.mlx_p, &x, &y);
-	if (!cub->save)
-	{
-		if (cub->win.wid > x)
-			cub->win.wid = x;
-		if (cub->win.hei > y)
-			cub->win.hei = y;
-	}
+	if (cub->win.wid > x)
+		cub->win.wid = x;
+	if (cub->win.hei > y)
+		cub->win.hei = y;
 }
 
-void	win_size(t_cub *cub, char **data)
+void	win_size(t_global *cub, char **data)
 {
 	int x;
 	int y;
@@ -50,7 +47,7 @@ int		num_args(char **data, int i, int tot)
 ** resolution.
 */
 
-int		fill_res(t_cub *cub, char **data)
+int		fill_res(t_global *cub, char **data)
 {
 	if (!num_args(data, 0, 3))
 		return (is_error("Resolution has less/more params than expected"));

@@ -19,7 +19,7 @@ void	init_player(t_player *player)
 ** with cos and sin.
 */
 
-void	update(t_cub *cub, t_player *player)
+void	update(t_global *cub, t_player *player)
 {
 	float mov_step;
 	float lateral_ang;
@@ -70,7 +70,7 @@ void	pos_player(t_player *player, int x, int y, char orientation)
 ** & find his orientation.
 */
 
-int		check_player(t_cub *cub)
+int		check_player(t_global *cub)
 {
 	int x;
 	int y;
@@ -81,13 +81,13 @@ int		check_player(t_cub *cub)
 	while (++y < cub->data.rows)
 	{
 		x = -1;
-		while (cub->grid[y][++x])
+		while (cub->map[y][++x])
 		{
-			if (ft_strchr("NSEW", cub->grid[y][x]))
+			if (ft_strchr("NSEW", cub->map[y][x]))
 			{
-				pos_player(&cub->player, x, y, cub->grid[y][x]);
+				pos_player(&cub->player, x, y, cub->map[y][x]);
 				num_position++;
-				cub->grid[y][x] = '0';
+				cub->map[y][x] = '0';
 				if (num_position > 1)
 					return (is_error("Multiple player position in map"));
 			}

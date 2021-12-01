@@ -9,7 +9,7 @@ void	init_win(t_win *win)
 	win->hei = -1;
 }
 
-void	free_win(t_cub *cub)
+void	free_win(t_global *cub)
 {
 	if (cub->win.mlx_p)
 	{

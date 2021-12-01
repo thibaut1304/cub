@@ -6,7 +6,7 @@
 ** visible from the actual player FOV.
 */
 
-void	fill_sprt(t_cub *cub, int i)
+void	fill_sprt(t_global *cub, int i)
 {
 	cub->sprt[i].dist = p_dist(cub->player.pos.x,
 			cub->player.pos.y, cub->sprt[i].pos.x,
@@ -20,7 +20,7 @@ void	fill_sprt(t_cub *cub, int i)
 ** Display it if it's the case.
 */
 
-void	sprt_color(t_cub *cub, t_pos text, t_pos pos, int i)
+void	sprt_color(t_global *cub, t_pos text, t_pos pos, int i)
 {
 	int		color;
 	int		background;
@@ -38,7 +38,7 @@ void	sprt_color(t_cub *cub, t_pos text, t_pos pos, int i)
 ** of a wall. Then, we loop to render.
 */
 
-void	sprt_display(t_cub *cub, int i)
+void	sprt_display(t_global *cub, int i)
 {
 	t_pos	text;
 	t_pos	pos;
@@ -73,7 +73,7 @@ void	sprt_display(t_cub *cub, int i)
 ** pos_x, determine where we should render the sprite on x axis.
 */
 
-void	fill_sprt_data(t_cub *cub)
+void	fill_sprt_data(t_global *cub)
 {
 	int		i;
 	int		top_px;
@@ -102,7 +102,7 @@ void	fill_sprt_data(t_cub *cub)
 	}
 }
 
-void	render_sprt(t_cub *cub)
+void	render_sprt(t_global *cub)
 {
 	int i;
 

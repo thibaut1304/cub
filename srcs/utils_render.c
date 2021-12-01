@@ -21,7 +21,7 @@ void	my_mlx_pixel_put(t_win *win, int x, int y, int color)
 ** Render rectangle, starting from position a.
 */
 
-void	rect(t_cub *cub, t_pos a, t_pos b, int color)
+void	rect(t_global *cub, t_pos a, t_pos b, int color)
 {
 	int	i;
 	int	j;
@@ -39,7 +39,7 @@ void	rect(t_cub *cub, t_pos a, t_pos b, int color)
 ** Render square of size pixel, starting from position.
 */
 
-void	square(t_pos pos, int size, t_cub *cub, int color)
+void	square(t_pos pos, int size, t_global *cub, int color)
 {
 	int		i;
 	int		j;
@@ -58,7 +58,7 @@ void	square(t_pos pos, int size, t_cub *cub, int color)
 ** of our line. then render it till len is reached.
 */
 
-void	render_line(t_line *line, t_cub *cub, int color)
+void	render_line(t_line *line, t_global *cub, int color)
 {
 	t_pos		delta;
 	t_pos		tmp;

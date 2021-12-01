@@ -5,8 +5,25 @@
 ** Init all of our ressources and then start the game.
 */
 
-void	init_cub(t_cub *cub, char *map)
+void	print_param(t_global *g)
 {
+	printf("%f\n", g->data.dist_pplane);
+	printf("%d\n", g->data.grid_flag);
+	printf("%d\n", g->data.txtr_err);
+	printf("%d\n", g->data.num_sprt);
+	printf("%d\n", g->data.floor);
+	printf("%d\n", g->data.ceil);
+	printf("%d\n", g->data.cols);
+	printf("%d\n", g->data.rows);
+	printf("%d\n", g->data.res);
+}
+
+void	init_cub(t_global *cub, char *map)
+{
+	// (void)map;
+	// t_list *list;
+
+	// list = NULL;
 	init_win(&cub->win);
 	init_img(&cub->win.img);
 	init_grid(cub);
@@ -16,6 +33,7 @@ void	init_cub(t_cub *cub, char *map)
 	cub->sprt_load = 0;
 	cub->mlx_load = 0;
 	cub->data.txtr_err = 0;
+	// print_param(cub);
 	load_cub(cub, map);
 }
 
@@ -23,7 +41,7 @@ void	init_cub(t_cub *cub, char *map)
 ** Free all of our ressources.
 */
 
-int		end_cub(t_cub *cub)
+int		end_cub(t_global *cub)
 {
 	free_texture(cub);
 	if (cub->sprt_load == 1)
@@ -42,7 +60,7 @@ int		end_cub(t_cub *cub)
 ** If we have a valid map, load the game.
 */
 
-void	load_cub(t_cub *cub, char *map)
+void	load_cub(t_global *cub, char *map)
 {
 	t_list	*list;
 
@@ -73,15 +91,9 @@ void	load_cub(t_cub *cub, char *map)
 ** If save arg true, then just copy the 1st image. Otherwise, loop the render.
 */
 
-void	run_cub(t_cub *cub)
+void	run_cub(t_global *cub)
 {
 	load_img(&cub->win);
-	if (cub->save)
-	{
-		render(cub);
-		save_bmp(cub);
-		end_cub(cub);
-	}
 	load_win(&cub->win);
 	mlx_hook(cub->win.win_p, 3, 1L << 1, key_released, &cub->player);
 	mlx_hook(cub->win.win_p, 2, 1L << 0, key_pressed, cub);
@@ -92,24 +104,12 @@ void	run_cub(t_cub *cub)
 
 int		main(int ac, char **av)
 {
-	t_cub cub;
+	t_global cub;
 
-	if (ac == 3 && !ft_strcmp(av[2], "--save"))
+	if (ac == 2)
 	{
 		if (cub_ext(av[1]))
-		{
-			cub.save = 1;
 			init_cub(&cub, av[1]);
-		}
-		return (0);
-	}
-	else if (ac == 2)
-	{
-		if (cub_ext(av[1]))
-		{
-			cub.save = 0;
-			init_cub(&cub, av[1]);
-		}
 		return (0);
 	}
 	else

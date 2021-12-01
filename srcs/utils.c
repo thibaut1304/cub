@@ -17,7 +17,7 @@ float	normalize(float ray_ang)
 ** Check if [y,x] position is a wall or not.
 */
 
-int		grid_is_wall(float x, float y, t_cub *cub)
+int		grid_is_wall(float x, float y, t_global *cub)
 {
 	int grid_x;
 	int grid_y;
@@ -28,7 +28,7 @@ int		grid_is_wall(float x, float y, t_cub *cub)
 	grid_y = floor(y);
 	if (grid_x >= cub->data.cols || grid_y >= cub->data.rows)
 		return (1);
-	if (cub->grid[grid_y][grid_x] == '1')
+	if (cub->map[grid_y][grid_x] == '1')
 		return (1);
 	else
 		return (0);

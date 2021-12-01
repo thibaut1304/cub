@@ -8,7 +8,7 @@
 ** xstep & ystep = calculate the incrementation required
 */
 
-t_dcast	fill_vt_data(t_cub *cub, t_ray *ray)
+t_dcast	fill_vt_data(t_global *cub, t_ray *ray)
 {
 	t_dcast	vt_data;
 
@@ -34,7 +34,7 @@ t_dcast	fill_vt_data(t_cub *cub, t_ray *ray)
 ** we found a wall or reached the border of our window.
 */
 
-void	vt_cast(t_ray *ray, t_cub *cub, int i)
+void	vt_cast(t_ray *ray, t_global *cub, int i)
 {
 	t_dcast	vt_data;
 

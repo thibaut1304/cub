@@ -1,12 +1,12 @@
 
 #include "../includes/cub.h"
 
-void	init_texture(t_cub *cub)
+void	init_texture(t_global *cub)
 {
 	int i;
 
 	i = 0;
-	while (i < 5)
+	while (i < 4)
 	{
 		cub->text[i].ptr = NULL;
 		cub->text[i].data = NULL;
@@ -20,7 +20,7 @@ void	init_texture(t_cub *cub)
 	}
 }
 
-void	free_texture(t_cub *cub)
+void	free_texture(t_global *cub)
 {
 	int i;
 
@@ -41,7 +41,7 @@ void	free_texture(t_cub *cub)
 	}
 }
 
-int		load_texture(t_cub *cub)
+int		load_texture(t_global *cub)
 {
 	int i;
 
@@ -67,7 +67,7 @@ int		load_texture(t_cub *cub)
 ** try to open file related to it.
 */
 
-int		is_texture(char **line_data, t_cub *cub)
+int		is_texture(char **line_data, t_global *cub)
 {
 	int fd;
 	int i;
@@ -101,7 +101,7 @@ int		is_texture(char **line_data, t_cub *cub)
 ** given.
 */
 
-int		fill_texture(t_cub *cub, char **line_data)
+int		fill_texture(t_global *cub, char **line_data)
 {
 	int i;
 

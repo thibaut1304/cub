@@ -24,7 +24,7 @@ int		rgb_value(int r, int g, int b)
 	return (0x0 | r << 16 | g << 8 | b);
 }
 
-int		fill_ceil(t_cub *cub, int hex_color)
+int		fill_ceil(t_global *cub, int hex_color)
 {
 	if (cub->data.ceil == 0)
 		cub->data.ceil = hex_color;
@@ -33,7 +33,7 @@ int		fill_ceil(t_cub *cub, int hex_color)
 	return (1);
 }
 
-int		fill_floor(t_cub *cub, int hex_color)
+int		fill_floor(t_global *cub, int hex_color)
 {
 	if (cub->data.floor == 0)
 		cub->data.floor = hex_color;

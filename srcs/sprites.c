@@ -1,7 +1,7 @@
 
 #include "../includes/cub.h"
 
-void	init_sprt(t_cub *cub, int i, int x, int y)
+void	init_sprt(t_global *cub, int i, int x, int y)
 {
 	cub->sprt[i].pos.x = x + 0.5;
 	cub->sprt[i].pos.y = y + 0.5;
@@ -11,7 +11,7 @@ void	init_sprt(t_cub *cub, int i, int x, int y)
 	cub->sprt[i].visibility = 0;
 }
 
-void	free_sprt(t_cub *cub)
+void	free_sprt(t_global *cub)
 {
 	if (cub->sprt)
 		free(cub->sprt);
@@ -22,7 +22,7 @@ void	free_sprt(t_cub *cub)
 ** Fill sprites structure with map position of each sprites.
 */
 
-int		load_sprt(t_cub *cub)
+int		load_sprt(t_global *cub)
 {
 	int i;
 	int j;
@@ -33,9 +33,9 @@ int		load_sprt(t_cub *cub)
 	while (++i < cub->data.rows)
 	{
 		j = -1;
-		while (cub->grid[i][++j])
+		while (cub->map[i][++j])
 		{
-			if (cub->grid[i][j] == '2' && id < cub->data.num_sprt)
+			if (cub->map[i][j] == '2' && id < cub->data.num_sprt)
 			{
 				init_sprt(cub, id, j, i);
 				id++;
@@ -50,7 +50,7 @@ int		load_sprt(t_cub *cub)
 ** If our current position value is 2, add 1 to total sprites.
 */
 
-void	num_sprt(t_cub *cub)
+void	num_sprt(t_global *cub)
 {
 	int	i;
 	int	j;
@@ -59,9 +59,9 @@ void	num_sprt(t_cub *cub)
 	while (++i < cub->data.rows)
 	{
 		j = -1;
-		while (cub->grid[i][++j])
+		while (cub->map[i][++j])
 		{
-			if (cub->grid[i][j] == '2')
+			if (cub->map[i][j] == '2')
 				cub->data.num_sprt++;
 		}
 	}
@@ -71,7 +71,7 @@ void	num_sprt(t_cub *cub)
 ** Find the number of sprites and malloc the required space.
 */
 
-int		check_sprt(t_cub *cub)
+int		check_sprt(t_global *cub)
 {
 	num_sprt(cub);
 	cub->sprt = malloc(sizeof(t_sprt) * cub->data.num_sprt);
