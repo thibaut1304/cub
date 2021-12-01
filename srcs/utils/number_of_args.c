@@ -6,11 +6,9 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:07:14 by thhusser          #+#    #+#             */
-/*   Updated: 2021/05/17 19:07:14 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/01 17:39:53 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdio.h>
 
 int	number_of_args(char **line)
 {

@@ -29,7 +29,7 @@ void	init_cub(t_global *cub, char *map)
 	init_grid(cub);
 	init_player(&cub->player);
 	init_texture(cub);
-	cub->error = NULL:
+	cub->error = NULL;
 	cub->nb_texture = 0;
 	cub->valid_parameter_count = 0;
 	cub->new_line = 0;

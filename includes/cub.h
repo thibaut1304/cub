@@ -196,6 +196,23 @@ typedef struct	s_global
 	int			nb_error;
 	t_map_textures map_textures;
 }				t_global;
+//parseur
+int				check_open_texture(char *file, t_global *g);
+void			parse_line_paths(char **line_split, t_global *g);
+int				check_borders(t_global *g, int line_count, int largest_line);
+int				check_walls(t_global *g, int row_count, int col_count);
+void			parse_map(char *line, int fd, t_global *g, t_list **list);
+void			parse_line_paths(char **line_split, t_global *g);
+void			parse_input(t_global *g, char *file, t_list **list);
+
+//utils
+void			append_error(t_global *g, char *id, char *message);
+int				detect_map_line(char *line);
+char			**dual_realloc(char **double_ptr, char *line);
+int				ft_is_number(char *str);
+int				is_in_charset(char c, char *charset);
+int				number_of_args(char **line);
+
 
 int				key_pressed(int key, t_global *cub);
 int				key_released(int key, t_player *player);

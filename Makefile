@@ -6,7 +6,7 @@
 #    By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/15 22:24:05 by thhusser          #+#    #+#              #
-#    Updated: 2021/12/01 15:35:28 by thhusser         ###   ########.fr        #
+#    Updated: 2021/12/01 17:39:12 by thhusser         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,8 +31,18 @@ SRCS_FILES	= \
 				grid_parsing.c colors.c resolution.c images.c \
 				window.c utils_init.c sprites.c \
 				utils_sprites.c utils_render.c render_sprites.c \
-				utils_colors.c
-
+				utils_colors.c error.c \
+				parsers/map/check_border.c \
+				parsers/map/check_walls.c \
+				parsers/map/parse_map.c \
+				parsers/parameters/parse_line_paths.c \
+				utils/append_error.c \
+				utils/detect_line_map.c \
+				utils/dual_realloc.c \
+				utils/ft_is_number.c \
+				utils/is_in_charset.c \
+				utils/number_of_args.c \
+				
 
 CC			=	clang
 
