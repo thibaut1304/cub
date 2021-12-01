@@ -217,6 +217,7 @@ char			**dual_realloc(char **double_ptr, char *line);
 int				ft_is_number(char *str);
 int				is_in_charset(char c, char *charset);
 int				number_of_args(char **line);
+void print_map(t_global *g);
 
 //error
 void			record_error(t_global *g, char *str);
@@ -277,7 +278,6 @@ void			render_mini_map(t_global *cub);
 void			render_mini_sprt(t_global *cub);
 void			init_player(t_player *player);
 void			update(t_global *cub, t_player *player);
-void			pos_player(t_player *player, int x, int y, char orientation);
 int				count_cols(t_list *list);
 int				is_num(char *num);
 int				free_split(char ***split, int ret);

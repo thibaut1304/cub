@@ -43,8 +43,3 @@ void	update(t_global *cub, t_player *player)
 		cub->player.pos.y = new_y;
 	}
 }
-
-/*
-** Save player pos & orientation in our structure
-*/
-

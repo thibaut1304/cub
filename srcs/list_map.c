@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 05:40:15 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/01 19:24:58 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/01 21:25:13 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int		count_grid(t_global *g, t_list *grid)
 	// g->tab[rows] = NULL;
 	g->number_columns = column;
 	g->number_rows = rows;
+	g->data.cols = g->number_columns;
+	g->data.rows = g->number_rows;
 	if (!g->tab)
 	{
 		append_error(g, "", "Not enough memory to malloc the map\n");

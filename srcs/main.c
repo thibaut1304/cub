@@ -5,6 +5,19 @@
 ** Init all of our ressources and then start the game.
 */
 
+void print_map(t_global *g)
+{
+	int i;
+
+	i = 0;
+	printf("%s\n", " --------------- PRINT MAP----------------");
+	while (i < g->number_rows)
+	{
+		printf("map -> %s\n", g->tab[i]);
+		i++;
+	}
+}
+
 void	print_param(t_global *g)
 {
 	printf("%f\n", g->data.dist_pplane);
@@ -31,7 +44,7 @@ static void 	ft_init_textures_map(t_map_textures *text)
 
 void	init_cub(t_global *cub, char *map)
 {
-	(void)map;
+	// (void)map;
 	// t_list *list;
 
 	// list = NULL;
@@ -61,6 +74,7 @@ void	init_cub(t_global *cub, char *map)
 int		end_cub(t_global *cub)
 {
 	// print_param(cub);
+	print_map(cub);
 	free_texture(cub);
 	if (cub->sprt_load == 1)
 		free_sprt(cub);
@@ -76,7 +90,6 @@ int		end_cub(t_global *cub)
 
 static void 	preliminaire(t_global *g)
 {
-	printf(_BLUE"HERE\n"_NC);
 	if (g->map_textures.sprite_texture_path == NULL)
 		g->nb_texture = TEXT - 1;
 	else
@@ -103,19 +116,12 @@ static void 	preliminaire(t_global *g)
 	}
 }
 
-static void		convert_input(t_global *cub)
-{
-	cub->data.cols = cub->number_columns;
-	cub->data.rows = cub->number_rows;
-}
-
 void	load_cub(t_global *cub, char *file)
 {
 	t_list	*list;
 
 	list = NULL;
 	parse_input(cub, file, &list);
-	convert_input(cub);
 	if (cub->error)
 	{
 		// show_errors(&g);
@@ -135,7 +141,6 @@ void	load_cub(t_global *cub, char *file)
 		// }
 		preliminaire(cub);
 		if (cub->error || !load_sprt(cub))
-				// !check_missing(cub))
 			end_cub(cub);
 		printf("Cub3d is launching..\n");
 		run_cub(cub);

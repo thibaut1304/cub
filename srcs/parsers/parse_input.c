@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:06:33 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/01 19:38:57 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/01 21:18:34 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void			parse_input(t_global *g, char *file, t_list **list)
 	int		fd;
 	char	*line;
 	int 	res;
+
 	res = 1;
 	fd = open(file, O_RDONLY);
 	if (fd < 0)

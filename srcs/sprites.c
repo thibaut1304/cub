@@ -33,9 +33,9 @@ int		load_sprt(t_global *cub)
 	while (++i < cub->data.rows)
 	{
 		j = -1;
-		while (cub->map[i][++j])
+		while (cub->tab[i][++j])
 		{
-			if (cub->map[i][j] == '2' && id < cub->data.num_sprt)
+			if (cub->tab[i][j] == '2' && id < cub->data.num_sprt)
 			{
 				init_sprt(cub, id, j, i);
 				id++;
@@ -59,9 +59,9 @@ void	num_sprt(t_global *cub)
 	while (++i < cub->data.rows)
 	{
 		j = -1;
-		while (cub->map[i][++j])
+		while (cub->tab[i][++j])
 		{
-			if (cub->map[i][j] == '2')
+			if (cub->tab[i][j] == '2')
 				cub->data.num_sprt++;
 		}
 	}

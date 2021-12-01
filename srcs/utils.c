@@ -28,7 +28,7 @@ int		grid_is_wall(float x, float y, t_global *cub)
 	grid_y = floor(y);
 	if (grid_x >= cub->data.cols || grid_y >= cub->data.rows)
 		return (1);
-	if (cub->map[grid_y][grid_x] == '1')
+	if (cub->tab[grid_y][grid_x] == '1')
 		return (1);
 	else
 		return (0);

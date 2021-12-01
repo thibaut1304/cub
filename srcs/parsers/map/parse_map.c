@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:06:09 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/01 19:23:13 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/01 21:28:53 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,12 +90,8 @@ static void	fetch_map(t_global *g, char *line, int fd, t_list **list)
 			line = NULL;
 			break ;
 		}
-
-		// je tente de record la map en liste chainee
-		// valide suprresion des leaks okay
 		if (*line != 0)
 			recovery_map(g, line, list);
-		// g->tab = dual_realloc(g->tab, line);
 		free(line);
 		line = NULL;
 	}
@@ -104,78 +100,52 @@ static void	fetch_map(t_global *g, char *line, int fd, t_list **list)
 	close(fd);
 }
 
-// static void	check_remaining_map_data(t_global *g, char *line, int fd)
-// {
-// 	while ((get_next_line(fd, &line) > 0))
-// 	{
-// 		if (*line != '\0')
-// 		{
-// 			append_error(g, "", "Invalid map, wrong data\n");
-// 			free(line);
-// 			line = NULL;
-// 			break ;
-// 		}
-// 		free(line);
-// 		line = NULL;
-// 	}
-// 	free(line);
-// 	line = NULL;
-// }
-
-// void 	parse_map(char *line, t_global *g, t_list **list)
-// {
-// 	if (line[0] != 0)
-// 	{
-// 		ft_lstadd_back(list, ft_lstnew(ft_strdup(line)));
-// 	}
-// 	else if (line[0] == 0 && g->in_map)
-// 			append_error(g, "", "Invalid map, empty line\n");
-// }
-
-// static void 	print_list(t_list *grid)
-// {
-// 	static int i = 0;
-// 	if (i == 0)
-// 		printf("Test record premiere ligne\n");
-// 	else
-// 		printf("Test record reste de la map\n");
-// 	while (grid)
-// 	{
-// 		printf("%s\n", (char *)grid->content);
-// 		grid = grid->next;
-// 	}
-// }
-
-static void 	check_args_player(t_global *g)
+static void	pos_player(t_player *player, int x, int y, char orientation)
 {
-	if (g->nb_player != 1)
-		append_error(g, "", "Invalid number of player\n");
-
+	if (player->pos.x == -1 && player->pos.y == -1)
+	{
+		player->pos.x = x + 0.55;
+		player->pos.y = y + 0.55;
+		if (orientation == 'N')
+			player->rot_ang = 1.5 * M_PI;
+		else if (orientation == 'S')
+			player->rot_ang = M_PI / 2;
+		else if (orientation == 'E')
+			player->rot_ang = 0;
+		else if (orientation == 'W')
+			player->rot_ang = M_PI;
+	}
 }
 
-static void	check_player(t_global *g)
+static void		check_player(t_global *cub)
 {
-	int	i;
-	int	j;
+	int x;
+	int y;
+	int num_position;
 
-	i = -1;
-	while (++i < g->number_rows)
+	y = -1;
+	num_position = 0;
+	while (++y < cub->data.rows)
 	{
-		j = -1;
-		while (++j < g->number_columns)
+		x = -1;
+		while (++x < cub->data.cols)
 		{
-			if (g->tab[i][j] == 'N' || g->tab[i][j] == 'S' ||
-				g->tab[i][j] == 'E' || g->tab[i][j] == 'W')
+			if (ft_strchr("NSEW", cub->tab[y][x]))
 			{
-				g->nb_player += 1;
-				g->player.pos.x = (float)i;
-				g->player.pos.y = (float)j;
-				g->pos_player = g->tab[i][j];
+				pos_player(&cub->player, x, y, cub->tab[y][x]);
+				num_position++;
+				cub->tab[y][x] = '0';
+				if (num_position > 1)
+					append_error(cub, "", "Multiple player position in map\n");
 			}
 		}
 	}
-	check_args_player(g);
+	printf("%d\n", num_position);
+	printf("%d\n", cub->data.rows);
+	if (num_position == 0)
+		append_error(cub, "", "No player position in map\n");
 }
+
 
 void		parse_map(char *line, int fd, t_global *g, t_list **list)
 {
@@ -188,5 +158,6 @@ void		parse_map(char *line, int fd, t_global *g, t_list **list)
 	if (!count_grid(g, *list))
 		ft_lstclear(list, &ft_del_list);
 	process_map(g);
+	print_map(g);
 	check_player(g);
 }

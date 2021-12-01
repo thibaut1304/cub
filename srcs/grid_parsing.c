@@ -40,19 +40,19 @@ int		is_grid(t_global *cub, int rows, int y, int len)
 
 	x = -1;
 	if (y > 0)
-		prev_row = ft_strlen(cub->map[y - 1]);
+		prev_row = ft_strlen(cub->tab[y - 1]);
 	if (y + 1 != rows)
-		next_row = ft_strlen(cub->map[y + 1]);
+		next_row = ft_strlen(cub->tab[y + 1]);
 	else
 		next_row = 0;
-	while (cub->map[y][++x])
+	while (cub->tab[y][++x])
 	{
-		if ((ft_strchr("02", cub->map[y][x]) != NULL) && (y == 0 || x == 0
+		if ((ft_strchr("02", cub->tab[y][x]) != NULL) && (y == 0 || x == 0
 			|| y == (rows - 1) || x == (len - 1)
 			|| x - 1 > prev_row || x + 1 > next_row
-			|| !check_surrounding(cub->map, x, y)))
+			|| !check_surrounding(cub->tab, x, y)))
 			return (is_error("Map is not fully closed"));
-		if (!ft_strchr(" 012", cub->map[y][x]))
+		if (!ft_strchr(" 012", cub->tab[y][x]))
 			return (is_error("Invalid char in map"));
 	}
 	return (1);
@@ -70,7 +70,7 @@ int		check_grid(t_global *cub)
 	y = -1;
 	while (++y < cub->data.rows)
 	{
-		len = ft_strlen(cub->map[y]);
+		len = ft_strlen(cub->tab[y]);
 		if (!is_grid(cub, cub->data.rows, y, len))
 			return (0);
 	}

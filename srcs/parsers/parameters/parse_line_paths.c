@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:06:17 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/01 19:50:36 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/01 20:02:30 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ static void	rgb_to_hex(char *rgb_str, char *id, int *path_ptr, t_global *global)
 	else
 		append_error(global, id, " : Already set\n");
 	free_all(rgb_split);
-	printf(_BLUE"%d\n"_NC, *path_ptr);
 	return ;
 }
 
