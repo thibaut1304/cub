@@ -1,12 +1,64 @@
 
 #include "../includes/cub.h"
 
+void free_old_texture(t_global *g, int nb_textures)
+{
+    free(g->map_textures.north_texture_path);
+    g->map_textures.north_texture_path = NULL;
+    free(g->map_textures.south_texture_path);
+    g->map_textures.south_texture_path = NULL;
+    free(g->map_textures.east_texture_path);
+    g->map_textures.east_texture_path = NULL;
+    free(g->map_textures.west_texture_path);
+    g->map_textures.west_texture_path = NULL;
+    if (nb_textures == TEXT)
+    {
+        free(g->map_textures.sprite_texture_path);
+        g->map_textures.sprite_texture_path = NULL;
+    }
+}
+
+void	load_new_texture(t_global *g)
+{
+	int	i;
+
+	i = -1;
+    g->textures = malloc(sizeof(t_texture) * g->nb_texture);
+    if (!g->textures)
+        return ;
+    while (++i < g->nb_texture)
+    {
+        ft_init_textures(&g->textures[i]);
+    }
+	g->textures[0].name = ft_strdup(g->map_textures.north_texture_path);
+	g->textures[1].name = ft_strdup(g->map_textures.south_texture_path);
+	g->textures[2].name = ft_strdup(g->map_textures.east_texture_path);
+	g->textures[3].name = ft_strdup(g->map_textures.west_texture_path);
+	g->textures[4].name = ft_strdup("./textures/wood.xpm");
+    if (g->nb_texture == TEXT)
+	    g->textures[5].name = ft_strdup(g->map_textures.sprite_texture_path);
+    i = -1;
+	while (++i < g->nb_texture)
+	{
+		g->textures[i].ptr = mlx_xpm_file_to_image(g->window.mlx_ptr,
+				g->textures[i].name, &g->textures[i].w, &g->textures[i].h);
+        if (!g->textures[i].ptr)
+        {
+		    append_error(g, g->textures[i].name, " : bad texture content\n");
+            break ;
+        }
+		g->textures[i].data = mlx_get_data_addr(g->textures[i].ptr,
+				&g->textures[i].bits_per_pxl, &g->textures[i].line_length,
+				&g->textures[i].endian);
+	}
+}
+
 void	init_texture(t_global *cub)
 {
 	int i;
 
 	i = 0;
-	while (i < 4)
+	while (i < 5)
 	{
 		cub->text[i].ptr = NULL;
 		cub->text[i].data = NULL;

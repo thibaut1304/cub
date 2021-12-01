@@ -43,6 +43,7 @@
 # define CARDINAL_POINTS "NSEW"
 # define MINIMAP_SCALE 10
 # define FOV 1.04719755
+# define TEXT 6
 
 typedef struct	s_pos
 {
@@ -164,8 +165,20 @@ typedef struct	s_sprt
 	float		pos_x;
 }				t_sprt;
 
+typedef struct s_map_textures
+{
+	char *north_texture_path;
+	char *south_texture_path;
+	char *east_texture_path;
+	char *west_texture_path;
+	char *sprite_texture_path;
+	int floor_color;
+	int ceiling_color;
+}				t_map_textures;
+
 typedef struct	s_global
 {
+	t_list		*error;
 	t_text		text[5];
 	t_player	player;
 	char		**map;
@@ -173,10 +186,15 @@ typedef struct	s_global
 	t_sprt		*sprt;
 	t_data		data;
 	t_win		win;
+	int			in_map;
+	int			valid_parameter_count;
+	int			new_line;
+	int			nb_texture;
 	int			ray_load;
 	int			sprt_load;
 	int			mlx_load;
 	int			nb_error;
+	t_map_textures map_textures;
 }				t_global;
 
 int				key_pressed(int key, t_global *cub);

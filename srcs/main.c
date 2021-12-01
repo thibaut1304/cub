@@ -29,6 +29,11 @@ void	init_cub(t_global *cub, char *map)
 	init_grid(cub);
 	init_player(&cub->player);
 	init_texture(cub);
+	cub->error = NULL:
+	cub->nb_texture = 0;
+	cub->valid_parameter_count = 0;
+	cub->new_line = 0;
+	cub->in_map = 0;
 	cub->ray_load = 0;
 	cub->sprt_load = 0;
 	cub->mlx_load = 0;
@@ -56,34 +61,60 @@ int		end_cub(t_global *cub)
 	exit(0);
 }
 
-/*
-** If we have a valid map, load the game.
-*/
+void 	preliminaire(t_global *g)
+{
+	if (g->map_textures.sprite_texture_path == NULL)
+		g->nb_texture = TEXT - 1;
+	else
+		g->nb_texture = TEXT;
+	check_open_texture(g->map_textures.north_texture_path, g);
+	check_open_texture(g->map_textures.south_texture_path, g);
+	check_open_texture(g->map_textures.west_texture_path, g);
+	check_open_texture(g->map_textures.east_texture_path, g);
+	if (g->nb_texture == TEXT)
+		check_open_texture(g->map_textures.sprite_texture_path, g);
+	if (g->error)
+	{
+		print_error(g->error);
+		return ;
+	}
+	g->window.mlx_ptr = mlx_init();
+	load_new_texture(g);
+	if (g->error)
+	{
+		print_error(g->error);
+		return ;
+	}
+}
 
-void	load_cub(t_global *cub, char *map)
+void	load_cub(t_global *cub, char *file)
 {
 	t_list	*list;
 
 	list = NULL;
-	if (parsing(cub, map, &list))
+	parse_input(cub, file, &list)
+	if (cub->error)
 	{
-		if (cub->data.txtr_err == 1 || cub->win.wid < 1)
-		{
-			if (cub->win.wid < 1)
-				is_error("Map has no valid resolution");
-			ft_lstclear(&list, &ft_del_list);
-			end_cub(cub);
-		}
+		// show_errors(&g);
+		print_error(g.error);
+		// printf(_RED "Nombre d'erreurs : %d\n" _NC, g.nb_error);
+		ft_lstclear(&list, &ft_del_list);
+		end_cub(cub);
+	}
+	else 
+	{
+		// if (cub->data.txtr_err == 1 || cub->win.wid < 1)
+		// {
+		// 	// if (cub->win.wid < 1)
+		// 		// is_error("Map has no valid resolution");
+		// 	ft_lstclear(&list, &ft_del_list);
+		// 	end_cub(cub);
+		// }
 		if (!grid_parsing(cub, list) || !load_texture(cub) || !load_sprt(cub) ||
 				!check_missing(cub))
 			end_cub(cub);
 		printf("Cub3d is launching..\n");
 		run_cub(cub);
-	}
-	else
-	{
-		ft_lstclear(&list, &ft_del_list);
-		end_cub(cub);
 	}
 }
 
@@ -102,6 +133,12 @@ void	run_cub(t_global *cub)
 	mlx_loop(cub->win.mlx_p);
 }
 
+
+//rajouter error.c
+//rajouer dossier parsing et utils
+//new fonction dans fichier texture pour gerer les anciens chemins 
+//list_map.c new
+
 int		main(int ac, char **av)
 {
 	t_global cub;
@@ -113,6 +150,6 @@ int		main(int ac, char **av)
 		return (0);
 	}
 	else
-		return (is_error("Wrong numbers of arguments"));
+		return (record_error("Bad numbers of arguments\n"));
 	return (0);
 }
