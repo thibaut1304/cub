@@ -6,11 +6,11 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:06:54 by thhusser          #+#    #+#             */
-/*   Updated: 2021/05/17 19:06:54 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/01 19:23:33 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../includes/cub.h"
 
 char	**dual_realloc(char **double_ptr, char *line)
 {

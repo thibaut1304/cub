@@ -6,11 +6,11 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 05:40:15 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/01 16:20:09 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/01 19:24:58 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../includes/cub.h"
 
 int		count_grid(t_global *g, t_list *grid)
 {
@@ -38,12 +38,6 @@ int		count_grid(t_global *g, t_list *grid)
 	return (1);
 }
 
-void 	del_list(void *grid)
-{
-	free(grid);
-	grid = NULL;
-}
-
 void	convert_grid(t_global *g, t_list *list)
 {
 	int i;
@@ -55,7 +49,7 @@ void	convert_grid(t_global *g, t_list *list)
 		i++;
 		list = list->next;
 	}
-	ft_lstclear(&list, &del_list);
+	ft_lstclear(&list, &ft_del_list);
 }
 
 int		count_cols(t_list *grid)

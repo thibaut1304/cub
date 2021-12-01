@@ -43,7 +43,7 @@
 # define CARDINAL_POINTS "NSEW"
 # define MINIMAP_SCALE 10
 # define FOV 1.04719755
-# define TEXT 6
+# define TEXT 5
 
 typedef struct	s_pos
 {
@@ -176,26 +176,31 @@ typedef struct s_map_textures
 	int ceiling_color;
 }				t_map_textures;
 
-typedef struct	s_global
+typedef struct		s_global
 {
-	t_list		*error;
-	t_text		text[5];
-	t_player	player;
-	char		**map;
-	t_ray		*rays;
-	t_sprt		*sprt;
-	t_data		data;
-	t_win		win;
-	int			in_map;
-	int			valid_parameter_count;
-	int			new_line;
-	int			nb_texture;
-	int			ray_load;
-	int			sprt_load;
-	int			mlx_load;
-	int			nb_error;
-	t_map_textures map_textures;
-}				t_global;
+	t_list			*error;
+	t_text			*text;
+	t_player		player;
+	char			**tab;
+	t_ray			*rays;
+	t_sprt			*sprt;
+	t_data			data;
+	t_win			win;
+	int				in_map;
+	int				valid_parameter_count;
+	int				new_line;
+	int				nb_texture;
+	int				ray_load;
+	int				sprt_load;
+	int				mlx_load;
+	int				nb_error;
+	t_map_textures 	map_textures;
+	int 			number_rows;
+	int 			number_columns;
+	int				nb_player;
+	int				pos_player;
+}					t_global;
+
 //parseur
 int				check_open_texture(char *file, t_global *g);
 void			parse_line_paths(char **line_split, t_global *g);
@@ -213,6 +218,21 @@ int				ft_is_number(char *str);
 int				is_in_charset(char c, char *charset);
 int				number_of_args(char **line);
 
+//error
+void			record_error(t_global *g, char *str);
+void			print_error(t_list *error);
+void			append_error(t_global *g, char *id, char *message);
+
+//texture
+void			load_new_texture(t_global *g);
+void 			free_old_texture(t_global *g, int nb_textures);
+void			init_texture(t_text *textures);
+void			load_texture(t_global *g);
+
+//list_map
+int				count_grid(t_global *g, t_list *grid);
+void			convert_grid(t_global *g, t_list *list);
+int				count_cols(t_list *grid);
 
 int				key_pressed(int key, t_global *cub);
 int				key_released(int key, t_player *player);
@@ -261,27 +281,14 @@ void			render_mini_sprt(t_global *cub);
 void			init_player(t_player *player);
 void			update(t_global *cub, t_player *player);
 void			pos_player(t_player *player, int x, int y, char orientation);
-int				check_player(t_global *cub);
 int				count_cols(t_list *list);
 int				is_num(char *num);
 int				free_split(char ***split, int ret);
 int				is_error(char *str);
 int				cub_ext(char *map_file);
-void			init_texture(t_global *cub);
 void			free_texture(t_global *cub);
-int				load_texture(t_global *cub);
 int				is_texture(char **line_data, t_global *cub);
 int				fill_texture(t_global *cub, char **line_data);
-int				is_rgb(char *color);
-int				rgb_value(int r, int g, int b);
-int				fill_ceil(t_global *cub, int hex_color);
-int				fill_floor(t_global *cub, int hex_color);
-int				check_format(char *line, int total, char **colors, t_global *cub);
-int				fill_color(t_global *cub, char *line);
-void			check_res(t_global *cub);
-void			win_size(t_global *cub, char **data);
-int				num_args(char **data, int i, int tot);
-int				fill_res(t_global *cub, char **data);
 void			init_healthbar(t_global *cub);
 void			render_healthbar_text(t_global *cub);
 void			render_healthbar(t_global *cub);

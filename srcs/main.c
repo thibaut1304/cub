@@ -28,7 +28,7 @@ void	init_cub(t_global *cub, char *map)
 	init_img(&cub->win.img);
 	init_grid(cub);
 	init_player(&cub->player);
-	init_texture(cub);
+	// init_texture(cub);
 	cub->error = NULL;
 	cub->nb_texture = 0;
 	cub->valid_parameter_count = 0;
@@ -61,7 +61,7 @@ int		end_cub(t_global *cub)
 	exit(0);
 }
 
-void 	preliminaire(t_global *g)
+static void 	preliminaire(t_global *g)
 {
 	if (g->map_textures.sprite_texture_path == NULL)
 		g->nb_texture = TEXT - 1;
@@ -78,8 +78,10 @@ void 	preliminaire(t_global *g)
 		print_error(g->error);
 		return ;
 	}
-	g->window.mlx_ptr = mlx_init();
-	load_new_texture(g);
+	// g->window.mlx_ptr = mlx_init();
+	// if (!cub->win.mlx_p)
+		// return (is_error("Couldn't init MLX"));
+	load_texture(g);
 	if (g->error)
 	{
 		print_error(g->error);
@@ -87,16 +89,23 @@ void 	preliminaire(t_global *g)
 	}
 }
 
+static void		convert_input(t_global *cub)
+{
+	cub->data.cols = cub->number_columns;
+	cub->data.rows = cub->number_rows;
+}
+
 void	load_cub(t_global *cub, char *file)
 {
 	t_list	*list;
 
 	list = NULL;
-	parse_input(cub, file, &list)
+	parse_input(cub, file, &list);
+	convert_input(cub);
 	if (cub->error)
 	{
 		// show_errors(&g);
-		print_error(g.error);
+		print_error(cub->error);
 		// printf(_RED "Nombre d'erreurs : %d\n" _NC, g.nb_error);
 		ft_lstclear(&list, &ft_del_list);
 		end_cub(cub);
@@ -110,9 +119,10 @@ void	load_cub(t_global *cub, char *file)
 		// 	ft_lstclear(&list, &ft_del_list);
 		// 	end_cub(cub);
 		// }
-		if (!grid_parsing(cub, list) || !load_texture(cub) || !load_sprt(cub) ||
+		if (!grid_parsing(cub, list) || cub->error || !load_sprt(cub) ||
 				!check_missing(cub))
 			end_cub(cub);
+		preliminaire(cub);
 		printf("Cub3d is launching..\n");
 		run_cub(cub);
 	}
@@ -126,6 +136,7 @@ void	run_cub(t_global *cub)
 {
 	load_img(&cub->win);
 	load_win(&cub->win);
+    free_old_texture(cub, cub->nb_texture);
 	mlx_hook(cub->win.win_p, 3, 1L << 1, key_released, &cub->player);
 	mlx_hook(cub->win.win_p, 2, 1L << 0, key_pressed, cub);
 	mlx_loop_hook(cub->win.mlx_p, render, cub);
@@ -134,10 +145,7 @@ void	run_cub(t_global *cub)
 }
 
 
-//rajouter error.c
-//rajouer dossier parsing et utils
-//new fonction dans fichier texture pour gerer les anciens chemins 
-//list_map.c new
+//checker les textures convert les datas
 
 int		main(int ac, char **av)
 {
@@ -150,6 +158,6 @@ int		main(int ac, char **av)
 		return (0);
 	}
 	else
-		return (record_error("Bad numbers of arguments\n"));
+		ft_putstr("Error\nBad numbers of arguments\n");
 	return (0);
 }

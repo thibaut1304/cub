@@ -6,12 +6,12 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:05:53 by thhusser          #+#    #+#             */
-/*   Updated: 2021/11/22 12:26:56 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/01 19:16:16 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include "../../../includes/cub3d.h"
+#include "../../../includes/cub.h"
 
 static int	check_top_and_bottom(char **map, int line_count)
 {

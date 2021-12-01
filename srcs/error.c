@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 15:52:33 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/01 16:06:16 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/01 19:14:23 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	record_error(t_global *g, char *str)
 
 	g->nb_error += 1;
 	new_error = ft_lstnew(ft_strdup(str));
-	ft_lstadd_back(&error, new_error);
+	ft_lstadd_back(&g->error, new_error);
 }
 
 void	print_error(t_list *error)
@@ -42,7 +42,7 @@ void	append_error(t_global *g, char *id, char *message)
 
 	res = ft_strjoin(id, message);
 	// g->error = dual_realloc(g->error, res);
-	record_error(g, &g->error, res);
+	record_error(g, res);
 	free(res);
 	res = NULL;
 }

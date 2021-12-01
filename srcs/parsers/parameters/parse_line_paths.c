@@ -6,11 +6,11 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:06:17 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/01 17:36:26 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/01 19:16:31 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/cub3d.h"
+#include "../../../includes/cub.h"
 
 static void	free_all(char **str)
 {
@@ -126,9 +126,9 @@ void		parse_line_paths(char **line_split, t_global *g)
 	else if (ft_strcmp(line_split[0], "S") == 0)
 		process_path(line_split, &(g->map_textures.sprite_texture_path), g);
 	else if (ft_strcmp(line_split[0], "F") == 0)
-		parse_rgb("F", line_split[1], &(g->map_textures.floor_color), g);
+		parse_rgb("F", line_split[1], &(g->data.floor), g);
 	else if (ft_strcmp(line_split[0], "C") == 0)
-		parse_rgb("C", line_split[1], &(g->map_textures.ceiling_color), g);
+		parse_rgb("C", line_split[1], &(g->data.ceil), g);
 	else
 		append_error(g, line_split[0], " wrong parameter ID\n");
 }

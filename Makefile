@@ -6,7 +6,7 @@
 #    By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/15 22:24:05 by thhusser          #+#    #+#              #
-#    Updated: 2021/12/01 17:39:12 by thhusser         ###   ########.fr        #
+#    Updated: 2021/12/01 19:17:13 by thhusser         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,13 +26,13 @@ SRCS		= $(addprefix ./srcs/, ${SRCS_FILES})
 SRCS_FILES	= \
 				main.c \
 				render.c cast_hz.c cast_vt.c cast_ray.c \
-		  		utils.c key_events.c parsing.c \
+		  		utils.c key_events.c \
 		 		player.c texture.c grid.c utils_parsing.c \
-				grid_parsing.c colors.c resolution.c images.c \
+				grid_parsing.c images.c \
 				window.c utils_init.c sprites.c \
 				utils_sprites.c utils_render.c render_sprites.c \
-				utils_colors.c error.c \
-				parsers/map/check_border.c \
+				error.c \
+				parsers/map/check_borders.c \
 				parsers/map/check_walls.c \
 				parsers/map/parse_map.c \
 				parsers/parameters/parse_line_paths.c \
@@ -42,6 +42,7 @@ SRCS_FILES	= \
 				utils/ft_is_number.c \
 				utils/is_in_charset.c \
 				utils/number_of_args.c \
+				list_map.c \
 				
 
 CC			=	clang

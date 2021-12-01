@@ -6,11 +6,11 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:06:09 by thhusser          #+#    #+#             */
-/*   Updated: 2021/11/22 12:35:45 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/01 19:23:13 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/cub3d.h"
+#include "../../../includes/cub.h"
 
 static char	*add_spaces(char *str, int largest_line)
 {
@@ -186,7 +186,7 @@ void		parse_map(char *line, int fd, t_global *g, t_list **list)
 	// print_list(list);
 	// check_remaining_map_data(g, line, fd);
 	if (!count_grid(g, *list))
-		ft_lstclear(list, &del_list);
+		ft_lstclear(list, &ft_del_list);
 	process_map(g);
 	check_player(g);
 }

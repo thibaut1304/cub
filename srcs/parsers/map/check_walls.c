@@ -6,11 +6,11 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:06:00 by thhusser          #+#    #+#             */
-/*   Updated: 2021/11/22 12:27:33 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/01 19:16:11 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/cub3d.h"
+#include "../../../includes/cub.h"
 
 static int	check_neighbour(char **map, int x, int y, char c)
 {
