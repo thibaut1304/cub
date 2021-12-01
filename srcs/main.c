@@ -18,9 +18,20 @@ void	print_param(t_global *g)
 	printf("%d\n", g->data.res);
 }
 
+static void 	ft_init_textures_map(t_map_textures *text)
+{
+	text->north_texture_path = NULL;
+	text->south_texture_path = NULL;
+	text->east_texture_path = NULL;
+	text->west_texture_path = NULL;
+	text->sprite_texture_path = NULL;
+	text->floor_color = -1;
+	text->ceiling_color = -1;
+}
+
 void	init_cub(t_global *cub, char *map)
 {
-	// (void)map;
+	(void)map;
 	// t_list *list;
 
 	// list = NULL;
@@ -28,7 +39,8 @@ void	init_cub(t_global *cub, char *map)
 	init_img(&cub->win.img);
 	init_grid(cub);
 	init_player(&cub->player);
-	// init_texture(cub);
+	ft_init_textures_map(&cub->map_textures);
+
 	cub->error = NULL;
 	cub->nb_texture = 0;
 	cub->valid_parameter_count = 0;
@@ -38,7 +50,7 @@ void	init_cub(t_global *cub, char *map)
 	cub->sprt_load = 0;
 	cub->mlx_load = 0;
 	cub->data.txtr_err = 0;
-	// print_param(cub);
+	init_grid(cub);
 	load_cub(cub, map);
 }
 
@@ -48,6 +60,7 @@ void	init_cub(t_global *cub, char *map)
 
 int		end_cub(t_global *cub)
 {
+	// print_param(cub);
 	free_texture(cub);
 	if (cub->sprt_load == 1)
 		free_sprt(cub);
@@ -63,6 +76,7 @@ int		end_cub(t_global *cub)
 
 static void 	preliminaire(t_global *g)
 {
+	printf(_BLUE"HERE\n"_NC);
 	if (g->map_textures.sprite_texture_path == NULL)
 		g->nb_texture = TEXT - 1;
 	else
@@ -119,10 +133,10 @@ void	load_cub(t_global *cub, char *file)
 		// 	ft_lstclear(&list, &ft_del_list);
 		// 	end_cub(cub);
 		// }
-		if (!grid_parsing(cub, list) || cub->error || !load_sprt(cub) ||
-				!check_missing(cub))
-			end_cub(cub);
 		preliminaire(cub);
+		if (cub->error || !load_sprt(cub))
+				// !check_missing(cub))
+			end_cub(cub);
 		printf("Cub3d is launching..\n");
 		run_cub(cub);
 	}

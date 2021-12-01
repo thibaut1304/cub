@@ -6,7 +6,7 @@
 #    By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/15 22:24:05 by thhusser          #+#    #+#              #
-#    Updated: 2021/12/01 19:17:13 by thhusser         ###   ########.fr        #
+#    Updated: 2021/12/01 19:28:37 by thhusser         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ SRCS_FILES	= \
 				window.c utils_init.c sprites.c \
 				utils_sprites.c utils_render.c render_sprites.c \
 				error.c \
+				parsers/parse_input.c \
 				parsers/map/check_borders.c \
 				parsers/map/check_walls.c \
 				parsers/map/parse_map.c \

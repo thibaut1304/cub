@@ -6,24 +6,11 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:06:33 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/01 19:16:22 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/01 19:38:57 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub.h"
-
-// int 	check_elem(t_global *g)
-// {
-// 	if (!g->map_textures->north_texture_path ||
-// 	!g->map_textures->south_texture_path ||
-// 	!g->map_textures->east_texture_path ||
-// 	!g->map_textures->west_texture_path ||
-// 	!g->map_textures->sprite_texture_path ||
-// 	g->map_textures->floor_color == -1 ||
-// 	g->map_textures->ceiling_color == -1 ||)
-// 		return (1);
-// 	return (0);
-// }
 
 static	void	fetch_arguments(char *line, t_global *g)
 {
@@ -66,7 +53,6 @@ void			parse_input(t_global *g, char *file, t_list **list)
 	int		fd;
 	char	*line;
 	int 	res;
-
 	res = 1;
 	fd = open(file, O_RDONLY);
 	if (fd < 0)

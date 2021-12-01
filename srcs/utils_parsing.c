@@ -5,22 +5,6 @@
 ** PARse each line of the map and save the length of the longest one.
 */
 
-int		count_cols(t_list *list)
-{
-	int max;
-	int i;
-
-	max = 0;
-	while (list)
-	{
-		i = ft_strlen(list->content);
-		if (i > max)
-			max = i;
-		list = list->next;
-	}
-	return (max);
-}
-
 /*
 ** Check if string sent has only numeric values.
 */
