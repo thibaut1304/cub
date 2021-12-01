@@ -49,6 +49,7 @@ void	free_texture(t_global *cub)
 			cub->text[i].data = NULL;
 		}
 	}
+	free(cub->text);
 }
 
 void	load_texture(t_global *g)

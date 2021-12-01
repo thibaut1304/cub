@@ -76,8 +76,8 @@ int		end_cub(t_global *cub)
 	// print_param(cub);
 	print_map(cub);
 	free_texture(cub);
-	if (cub->sprt_load == 1)
-		free_sprt(cub);
+	// if (cub->sprt_load == 1)
+		// free_sprt(cub);
 	if (cub->ray_load == 1)
 		free(cub->rays);
 	if (cub->data.rows)
@@ -85,6 +85,8 @@ int		end_cub(t_global *cub)
 	if (cub->win.img.img)
 		free_img(cub);
 	free_win(cub);
+	ft_lstclear(&cub->error, &ft_del_list);
+	ft_lstclear(&cub->list, &ft_del_list);
 	exit(0);
 }
 
@@ -121,16 +123,13 @@ static void 	preliminaire(t_global *g)
 
 void	load_cub(t_global *cub, char *file)
 {
-	t_list	*list;
 
-	list = NULL;
-	parse_input(cub, file, &list);
+	cub->list = NULL;
+	parse_input(cub, file, &cub->list);
 	if (cub->error)
 	{
 		// show_errors(&g);
 		print_error(cub->error);
-		// printf(_RED "Nombre d'erreurs : %d\n" _NC, g.nb_error);
-		ft_lstclear(&list, &ft_del_list);
 		end_cub(cub);
 	}
 	else 

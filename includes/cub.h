@@ -179,6 +179,7 @@ typedef struct s_map_textures
 typedef struct		s_global
 {
 	t_list			*error;
+	t_list			*list;
 	t_text			*text;
 	t_player		player;
 	char			**tab;
