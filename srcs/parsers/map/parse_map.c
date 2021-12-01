@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:06:09 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/01 21:28:53 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/01 21:33:53 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,8 +140,6 @@ static void		check_player(t_global *cub)
 			}
 		}
 	}
-	printf("%d\n", num_position);
-	printf("%d\n", cub->data.rows);
 	if (num_position == 0)
 		append_error(cub, "", "No player position in map\n");
 }
@@ -158,6 +156,5 @@ void		parse_map(char *line, int fd, t_global *g, t_list **list)
 	if (!count_grid(g, *list))
 		ft_lstclear(list, &ft_del_list);
 	process_map(g);
-	print_map(g);
 	check_player(g);
 }

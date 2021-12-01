@@ -96,7 +96,7 @@ int		render(t_global *cub)
 {
 	cast_all_rays(cub);
 	render_3d(cub);
-	render_sprt(cub);
+	// render_sprt(cub);
 	mlx_put_image_to_window(cub->win.mlx_p, cub->win.win_p,
 		cub->win.img.img, 0, 0);
 	return (1);

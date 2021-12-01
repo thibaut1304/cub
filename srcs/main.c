@@ -105,9 +105,12 @@ static void 	preliminaire(t_global *g)
 		print_error(g->error);
 		return ;
 	}
-	// g->window.mlx_ptr = mlx_init();
-	// if (!cub->win.mlx_p)
-		// return (is_error("Couldn't init MLX"));
+	g->win.mlx_p = mlx_init();
+	if (!g->win.mlx_p)
+	{
+		record_error(g, "Couldn't init MLX\n");
+		return ;
+	}
 	load_texture(g);
 	if (g->error)
 	{
@@ -132,13 +135,14 @@ void	load_cub(t_global *cub, char *file)
 	}
 	else 
 	{
-		// if (cub->data.txtr_err == 1 || cub->win.wid < 1)
-		// {
-		// 	// if (cub->win.wid < 1)
-		// 		// is_error("Map has no valid resolution");
-		// 	ft_lstclear(&list, &ft_del_list);
-		// 	end_cub(cub);
-		// }
+		cub->data.dist_pplane = (cub->win.wid / 2) / tan(FOV / 2);
+		cub->rays = malloc(sizeof(t_ray) * cub->win.wid);
+		if (!cub->rays)
+		{
+			record_error(cub, "Not enough memory to malloc rays");
+			return ;
+		}
+		cub->ray_load = 1;
 		preliminaire(cub);
 		if (cub->error || !load_sprt(cub))
 			end_cub(cub);

@@ -2,7 +2,6 @@ NO ./textures/brick.xpm
 SO ./textures/grass.xpm
 WE ./textures/metal.xpm
 EA ./textures/stone.xpm
-S ./textures/stone.xpm
 F 220,100,0
 C 225,30,0
 
