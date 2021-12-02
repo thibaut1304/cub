@@ -1,12 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cast_hz.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/02 16:30:33 by thhusser          #+#    #+#             */
+/*   Updated: 2021/12/02 16:30:36 by thhusser         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/cub.h"
-
-/*
-** Fill all data required to find if wall was hz hit.
-** hit_x & hit_y = points where it hits the wall.
-** yinter & xinter = coordinates of the closest hz intersection
-** xstep & ystep = calculate the incrementation required
-*/
 
 t_dcast	fill_hz_data(t_global *cub, t_ray *ray)
 {
@@ -28,11 +32,6 @@ t_dcast	fill_hz_data(t_global *cub, t_ray *ray)
 	hz_data.next_y = hz_data.yinter;
 	return (hz_data);
 }
-
-/*
-** Check if we hit a wall, if not, Increment by x and ystep and loop till
-** we found a wall or reached the border of our window.
-*/
 
 void	hz_cast(t_ray *ray, t_global *cub, int i)
 {

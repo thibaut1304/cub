@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/02 16:29:46 by thhusser          #+#    #+#             */
+/*   Updated: 2021/12/02 16:33:33 by thhusser         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef CUB_H
 # define CUB_H
@@ -12,11 +23,6 @@
 # include "../libft/libft.h"
 # include "../minilibx/mlx.h"
 
-/*
-** KEY EVENTS
-** to find keycode of each key, execute 'xev' in terminal and press key wanted
-*/
-
 # define KEY_Z		122
 # define KEY_A		97
 # define KEY_W		119
@@ -28,11 +34,6 @@
 # define KEY_DOWN	65364
 # define KEY_RIGHT	65363
 # define KEY_ESC	65307
-
-/*
-** COLORS
-** https://www.rapidtables.com/web/color/RGB_Color.html#color-table
-*/
 
 # define V_GRAY	0x00E1E3E8
 # define GRAY	0x00818591

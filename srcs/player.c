@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   player.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/02 16:31:38 by thhusser          #+#    #+#             */
+/*   Updated: 2021/12/02 17:00:17 by thhusser         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/cub.h"
 
@@ -9,15 +20,9 @@ void	init_player(t_player *player)
 	player->walk_d = 0;
 	player->lateral_d = 0;
 	player->rot_ang = 0;
-	player->mov_speed = 0.3;
-	player->rot_speed = 2 * (M_PI / 180);
+	player->mov_speed = 0.2;
+	player->rot_speed = 3 * (M_PI / 180);
 }
-
-/*
-** After each movement. Determine the new position of our player.
-** Knowing our player rotation angle and lenght of his step. We can find x & y
-** with cos and sin.
-*/
 
 void	update(t_global *cub, t_player *player)
 {

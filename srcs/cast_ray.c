@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cast_ray.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/02 16:30:41 by thhusser          #+#    #+#             */
+/*   Updated: 2021/12/02 16:30:43 by thhusser         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/cub.h"
 
@@ -12,10 +23,6 @@ void	select_texture(t_ray *rays, float hz_dist, float vt_dist)
 		rays->id = 0;
 }
 
-/*
-** Return the distance of the ray depending on vt or hz dist..
-*/
-
 float	find_ray_dist(float hz_dist, float vt_dist)
 {
 	if (hz_dist < vt_dist)
@@ -23,26 +30,12 @@ float	find_ray_dist(float hz_dist, float vt_dist)
 	return (vt_dist);
 }
 
-/*
-** Return the point of the wall hit depending on vt or hz dist.
-*/
-
 float	find_ray_hit(float hz_dist, float vt_dist, float hz_hit, float vt_hit)
 {
 	if (hz_dist < vt_dist)
 		return (hz_hit);
 	return (vt_hit);
 }
-
-/*
-** 1. Perform vt and hz intersections check separatly
-** 2. When wall is either a vt or hz intersection, the checking stop
-** 3. Distance of both are comparend and we select the closest one
-**
-** Save wall_hit position and distance from player to the hit position.
-** Then save the line between the 2 positions.
-** Finally find the texture related to the ray. FLT_MAX is highest float value.
-*/
 
 t_ray	cast(t_ray ray, t_global *cub)
 {
@@ -69,10 +62,6 @@ t_ray	cast(t_ray ray, t_global *cub)
 	select_texture(&ray, hz_dist, vt_dist);
 	return (ray);
 }
-
-/*
-** Init each ray with his own angle and save all the data of his cast.
-*/
 
 void	cast_all_rays(t_global *cub)
 {

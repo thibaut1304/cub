@@ -6,7 +6,7 @@
 #    By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/15 22:24:05 by thhusser          #+#    #+#              #
-#    Updated: 2021/12/01 19:28:37 by thhusser         ###   ########.fr        #
+#    Updated: 2021/12/02 16:34:10 by thhusser         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,10 +27,10 @@ SRCS_FILES	= \
 				main.c \
 				render.c cast_hz.c cast_vt.c cast_ray.c \
 		  		utils.c key_events.c \
-		 		player.c texture.c grid.c utils_parsing.c \
-				grid_parsing.c images.c \
-				window.c utils_init.c sprites.c \
-				utils_sprites.c utils_render.c render_sprites.c \
+		 		player.c texture.c grid.c \
+				images.c \
+				window.c utils_init.c \
+				utils_sprites.c utils_render.c \
 				error.c \
 				parsers/parse_input.c \
 				parsers/map/check_borders.c \
@@ -39,7 +39,6 @@ SRCS_FILES	= \
 				parsers/parameters/parse_line_paths.c \
 				utils/append_error.c \
 				utils/detect_line_map.c \
-				utils/dual_realloc.c \
 				utils/ft_is_number.c \
 				utils/is_in_charset.c \
 				utils/number_of_args.c \

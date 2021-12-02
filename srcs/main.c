@@ -1,35 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/02 16:31:31 by thhusser          #+#    #+#             */
+/*   Updated: 2021/12/02 17:15:36 by thhusser         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/cub.h"
-
-/*
-** Init all of our ressources and then start the game.
-*/
-
-void print_map(t_global *g)
-{
-	int i;
-
-	i = 0;
-	printf("%s\n", " --------------- PRINT MAP----------------");
-	while (i < g->number_rows)
-	{
-		printf("map -> %s\n", g->tab[i]);
-		i++;
-	}
-}
-
-void	print_param(t_global *g)
-{
-	printf("%f\n", g->data.dist_pplane);
-	printf("%d\n", g->data.grid_flag);
-	printf("%d\n", g->data.txtr_err);
-	printf("%d\n", g->data.num_sprt);
-	printf("%d\n", g->data.floor);
-	printf("%d\n", g->data.ceil);
-	printf("%d\n", g->data.cols);
-	printf("%d\n", g->data.rows);
-	printf("%d\n", g->data.res);
-}
 
 static void 	ft_init_textures_map(t_map_textures *text)
 {
@@ -42,12 +23,8 @@ static void 	ft_init_textures_map(t_map_textures *text)
 	text->ceiling_color = -1;
 }
 
-void	init_cub(t_global *cub, char *map)
+static void	init_cub(t_global *cub, char *map)
 {
-	// (void)map;
-	// t_list *list;
-
-	// list = NULL;
 	init_win(&cub->win);
 	init_img(&cub->win.img);
 	init_grid(cub);
@@ -67,17 +44,9 @@ void	init_cub(t_global *cub, char *map)
 	load_cub(cub, map);
 }
 
-/*
-** Free all of our ressources.
-*/
-
 int		end_cub(t_global *cub)
 {
-	// print_param(cub);
-	print_map(cub);
 	free_texture(cub);
-	// if (cub->sprt_load == 1)
-		// free_sprt(cub);
 	if (cub->ray_load == 1)
 		free(cub->rays);
 	if (cub->data.rows)
@@ -128,7 +97,6 @@ void	load_cub(t_global *cub, char *file)
 	parse_input(cub, file, &cub->list);
 	if (cub->error)
 	{
-		// show_errors(&g);
 		print_error(cub->error);
 		end_cub(cub);
 	}
@@ -143,40 +111,52 @@ void	load_cub(t_global *cub, char *file)
 		}
 		cub->ray_load = 1;
 		preliminaire(cub);
-		if (cub->error || !load_sprt(cub))
+		if (cub->error)
 			end_cub(cub);
-		printf("Cub3d is launching..\n");
+		ft_putstr("Cub3d is launching..\n");
 		run_cub(cub);
 	}
 }
-
-/*
-** If save arg true, then just copy the 1st image. Otherwise, loop the render.
-*/
 
 void	run_cub(t_global *cub)
 {
 	load_img(&cub->win);
 	load_win(&cub->win);
     free_old_texture(cub, cub->nb_texture);
-	mlx_hook(cub->win.win_p, 3, 1L << 1, key_released, &cub->player);
+	// mlx_do_key_autorepeatoff(cub->win.mlx_p);
 	mlx_hook(cub->win.win_p, 2, 1L << 0, key_pressed, cub);
+	mlx_hook(cub->win.win_p, 3, 1L << 1, key_released, &cub->player);
 	mlx_loop_hook(cub->win.mlx_p, render, cub);
 	mlx_hook(cub->win.win_p, 33, 1L << 17, &end_cub, cub);
 	mlx_loop(cub->win.mlx_p);
 }
 
-
 //checker les textures convert les datas
 
-int		main(int ac, char **av)
+static int     is_valid_file(char *file, char *str)
+{
+	int		i;
+
+	i = 0;
+	while (file[i] != '\0')
+		i++;
+	i -= 4;
+	if (i > 0)
+		return (ft_strequ(&file[i], str));
+	else
+		return (0);
+}
+
+int		main(int argc, char **argv)
 {
 	t_global cub;
 
-	if (ac == 2)
+	if (argc == 2)
 	{
-		if (cub_ext(av[1]))
-			init_cub(&cub, av[1]);
+		if (is_valid_file(argv[1], ".cub"))
+			init_cub(&cub, argv[1]);
+		else
+			ft_putstr("Is not a '.cub' file\n");
 		return (0);
 	}
 	else

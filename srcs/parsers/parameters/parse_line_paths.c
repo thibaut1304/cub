@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:06:17 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/01 20:02:30 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/02 16:47:11 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,14 +103,16 @@ int		check_open_texture(char *file, t_global *g)
 		append_error(g, file, " : impossible to open it !\n");
 		return (1);
 	}
-	close(fd);
+	if (fd >= 0)
+		close(fd);
 	fd = open(file, O_DIRECTORY);
     if (!(fd < 0))
 	{
 		append_error(g, file, " : file is directory\n");
 		return (1);
 	}
-    close(fd);
+	if (fd >= 0)
+    	close(fd);
 	return (0);
 }
 

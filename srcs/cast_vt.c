@@ -1,12 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cast_vt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/02 16:30:48 by thhusser          #+#    #+#             */
+/*   Updated: 2021/12/02 16:30:50 by thhusser         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/cub.h"
-
-/*
-** Fill all data required to find if wall was hz hit.
-** hit_x & hit_y = points where it hits the wall.
-** yinter & xinter = coordinates of the closest hz intersection
-** xstep & ystep = calculate the incrementation required
-*/
 
 t_dcast	fill_vt_data(t_global *cub, t_ray *ray)
 {
@@ -28,11 +32,6 @@ t_dcast	fill_vt_data(t_global *cub, t_ray *ray)
 	vt_data.next_y = vt_data.yinter;
 	return (vt_data);
 }
-
-/*
-** Check if we hit a wall, if not, Increment by x and ystep and loop till
-** we found a wall or reached the border of our window.
-*/
 
 void	vt_cast(t_ray *ray, t_global *cub, int i)
 {

@@ -1,10 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils_sprites.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/02 16:32:22 by thhusser          #+#    #+#             */
+/*   Updated: 2021/12/02 16:32:25 by thhusser         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/cub.h"
-
-/*
-** If the angle is more than half of our FOV (positive or negative side). It
-** won't be in the FOV of our player, then can't be visible.
-*/
 
 void	is_visible(t_global *cub, int i)
 {
@@ -33,11 +39,6 @@ float	find_angle(t_global *cub, int i)
 	ang = atan2(delta_y, delta_x) - cub->player.rot_ang;
 	return (ang);
 }
-
-/*
-** In the case we have superimposed sprites, we swap their position to display
-** them in the good order.
-*/
 
 void	sort_sprt(t_global *cub)
 {
