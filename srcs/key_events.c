@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 16:31:17 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/02 17:07:17 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/02 17:50:15 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,21 @@
 
 int		key_pressed(int key, t_global *cub)
 {
-	if (key == KEY_LEFT && cub->player.walk_d != 0)
-		cub->player.turn_d = -1;
-	else if (key == KEY_RIGHT && cub->player.walk_d != 0)
-		cub->player.turn_d = 1;
+	static int val = 0;
+
+	if (key == 32)
+	{
+		if (val == 0)
+		{
+			mlx_do_key_autorepeatoff(cub->win.mlx_p);
+			val = 1;
+		}
+		else if (val == 1)
+		{
+			mlx_do_key_autorepeaton(cub->win.mlx_p);
+			val = 0;
+		}
+	}
 	else if (key == KEY_Z || key == KEY_UP || key == KEY_W)
 		cub->player.walk_d = 1;
 	else if (key == KEY_S || key == KEY_DOWN)
