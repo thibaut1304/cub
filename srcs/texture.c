@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 16:31:49 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/02 16:32:03 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/03 01:29:39 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	free_texture(t_global *cub)
 	}
 	free(cub->text);
 }
+// ici verifier si texture a bien la bonne extension 
 
 void	load_texture(t_global *g)
 {

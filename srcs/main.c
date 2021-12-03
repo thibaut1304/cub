@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 16:31:31 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/02 17:15:36 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/03 01:28:08 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,15 +123,12 @@ void	run_cub(t_global *cub)
 	load_img(&cub->win);
 	load_win(&cub->win);
     free_old_texture(cub, cub->nb_texture);
-	// mlx_do_key_autorepeatoff(cub->win.mlx_p);
 	mlx_hook(cub->win.win_p, 2, 1L << 0, key_pressed, cub);
 	mlx_hook(cub->win.win_p, 3, 1L << 1, key_released, &cub->player);
 	mlx_loop_hook(cub->win.mlx_p, render, cub);
 	mlx_hook(cub->win.win_p, 33, 1L << 17, &end_cub, cub);
 	mlx_loop(cub->win.mlx_p);
 }
-
-//checker les textures convert les datas
 
 static int     is_valid_file(char *file, char *str)
 {
