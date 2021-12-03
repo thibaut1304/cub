@@ -6,7 +6,7 @@
 #    By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/15 22:24:05 by thhusser          #+#    #+#              #
-#    Updated: 2021/12/03 01:30:13 by thhusser         ###   ########.fr        #
+#    Updated: 2021/12/03 11:28:50 by thhusser         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,9 @@ SRCS_FILES	= \
 				parsers/map/check_borders.c \
 				parsers/map/check_walls.c \
 				parsers/map/parse_map.c \
+				parsers/map/parse_map2.c \
 				parsers/parameters/parse_line_paths.c \
+				parsers/parameters/check_open_file.c \
 				utils/append_error.c \
 				utils/detect_line_map.c \
 				utils/ft_is_number.c \

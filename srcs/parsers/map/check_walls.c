@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:06:00 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/01 19:16:11 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/03 11:02:56 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	check_neighbour(char **map, int x, int y, char c)
 
 static int	check_nswe(char **map, int x, int y, int row_count)
 {
-	int flag;
+	int	flag;
 
 	flag = 1;
 	if (x == 0)
@@ -51,7 +51,7 @@ static int	check_nswe(char **map, int x, int y, int row_count)
 	return (flag);
 }
 
-int		check_walls(t_global *g, int row_count, int col_count)
+int	check_walls(t_global *g, int row_count, int col_count)
 {
 	int		x;
 	int		y;
@@ -69,6 +69,4 @@ int		check_walls(t_global *g, int row_count, int col_count)
 				flag += check_nswe(map, x, y, row_count - 1);
 	}
 	return (flag);
-	// if (flag)
-		// append_error(g, "", "Invalid map - wall missing\n");
 }

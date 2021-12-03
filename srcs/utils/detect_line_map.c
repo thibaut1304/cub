@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:06:49 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/01 19:23:28 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/03 11:35:41 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	detect_map_line(char *line)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!line)

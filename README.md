@@ -6,4 +6,8 @@
 
 --> Verifier la gestion des erreurs et l'affichage !
 
--->
+--> Verifier parsing erreur et leaks
+
+--> verifier texture nord ...
+
+-->supprimer 2 dans la map

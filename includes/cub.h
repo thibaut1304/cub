@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 16:29:46 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/02 16:33:33 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/03 11:25:13 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,6 +201,7 @@ typedef struct		s_global
 	int 			number_columns;
 	int				nb_player;
 	int				pos_player;
+	int 			fd;
 }					t_global;
 
 //parseur
@@ -211,6 +212,8 @@ int				check_walls(t_global *g, int row_count, int col_count);
 void			parse_map(char *line, int fd, t_global *g, t_list **list);
 void			parse_line_paths(char **line_split, t_global *g);
 void			parse_input(t_global *g, char *file, t_list **list);
+char			*add_spaces(char *str, int largest_line);
+void			process_map(t_global *g);
 
 //utils
 void			append_error(t_global *g, char *id, char *message);
@@ -219,7 +222,7 @@ char			**dual_realloc(char **double_ptr, char *line);
 int				ft_is_number(char *str);
 int				is_in_charset(char c, char *charset);
 int				number_of_args(char **line);
-void print_map(t_global *g);
+void 			print_map(t_global *g);
 
 //error
 void			record_error(t_global *g, char *str);

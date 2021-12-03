@@ -6,11 +6,11 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:07:06 by thhusser          #+#    #+#             */
-/*   Updated: 2021/05/17 19:07:06 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/03 11:35:49 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		is_in_charset(char c, char *charset)
+int	is_in_charset(char c, char *charset)
 {
 	while (*charset)
 	{

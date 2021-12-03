@@ -1,23 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   append_error.c                                     :+:      :+:    :+:   */
+/*   check_open_file.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/17 19:06:44 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/03 11:36:04 by thhusser         ###   ########.fr       */
+/*   Created: 2021/12/03 11:07:46 by thhusser          #+#    #+#             */
+/*   Updated: 2021/12/03 11:17:39 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub.h"
+#include "../../../includes/cub.h"
 
-void	append_error(t_global *g, char *id, char *message)
+int	check_open_texture(char *file, t_global *g)
 {
-	char	*res;
+	int	fd;
 
-	res = ft_strjoin(id, message);
-	record_error(g, res);
-	free(res);
-	res = NULL;
+	fd = open(file, O_RDONLY);
+	if (fd < 0)
+	{
+		append_error(g, file, " : impossible to open it !\n");
+		return (1);
+	}
+	if (fd >= 0)
+		close(fd);
+	fd = open(file, O_DIRECTORY);
+	if (!(fd < 0))
+	{
+		append_error(g, file, " : file is directory\n");
+		return (1);
+	}
+	if (fd >= 0)
+		close(fd);
+	return (0);
 }

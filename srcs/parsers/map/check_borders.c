@@ -6,17 +6,16 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:05:53 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/01 19:16:16 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/03 11:02:18 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../../../includes/cub.h"
 
 static int	check_top_and_bottom(char **map, int line_count)
 {
-	int i;
-	int flag;
+	int	i;
+	int	flag;
 
 	flag = 0;
 	i = -1;
@@ -32,9 +31,9 @@ static int	check_top_and_bottom(char **map, int line_count)
 
 static int	check_left_and_right(char **map, int largest_line, t_global *g)
 {
-	int i;
-	int j;
-	int flag;
+	int	i;
+	int	j;
+	int	flag;
 
 	flag = 0;
 	i = -1;
@@ -58,7 +57,7 @@ static int	check_left_and_right(char **map, int largest_line, t_global *g)
 	return (flag);
 }
 
-int		check_borders(t_global *g, int line_count, int largest_line)
+int	check_borders(t_global *g, int line_count, int largest_line)
 {
 	int		flag;
 	char	**map;
@@ -68,6 +67,4 @@ int		check_borders(t_global *g, int line_count, int largest_line)
 	flag += check_top_and_bottom(map, line_count);
 	flag += check_left_and_right(map, largest_line, g);
 	return (flag);
-	// if (flag)
-		// append_error(g, "", "Map is not correctly closed at borders\n");
 }

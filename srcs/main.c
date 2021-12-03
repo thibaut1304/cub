@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 16:31:31 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/03 01:28:08 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/03 11:25:30 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ static void	init_cub(t_global *cub, char *map)
 	cub->sprt_load = 0;
 	cub->mlx_load = 0;
 	cub->data.txtr_err = 0;
+	cub->fd = 0;
 	init_grid(cub);
 	load_cub(cub, map);
 }
@@ -154,7 +155,6 @@ int		main(int argc, char **argv)
 			init_cub(&cub, argv[1]);
 		else
 			ft_putstr("Is not a '.cub' file\n");
-		return (0);
 	}
 	else
 		ft_putstr("Error\nBad numbers of arguments\n");

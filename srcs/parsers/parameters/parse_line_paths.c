@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:06:17 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/02 16:47:11 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/03 11:36:12 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	free_all(char **str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!str)
@@ -54,13 +54,15 @@ static void	rgb_to_hex(char *rgb_str, char *id, int *path_ptr, t_global *global)
 
 static void	parse_rgb(char *id, char *rgb_str, int *path_ptr, t_global *g)
 {
-	char **rgb_split;
+	char	**rgb_split;
 
 	rgb_split = ft_split(rgb_str, ',');
 	if (number_of_args(rgb_split) == 3)
 	{
 		if (ft_is_number(rgb_split[0]))
+		{
 			if (ft_is_number(rgb_split[1]))
+			{
 				if (ft_is_number(rgb_split[2]))
 				{
 					rgb_to_hex(rgb_str, id, path_ptr, g);
@@ -68,6 +70,8 @@ static void	parse_rgb(char *id, char *rgb_str, int *path_ptr, t_global *g)
 					free_all(rgb_split);
 					return ;
 				}
+			}
+		}
 		append_error(g, id, " : only takes positive numbers\n");
 		free_all(rgb_split);
 		return ;
@@ -81,42 +85,16 @@ static void	process_path(char **line_split, char **path_ptr, t_global *g)
 {
 	if (!path_ptr)
 		return ;
-	// printf(_RED"\n%s\n"_NC, *path_ptr);
-	// printf(_GREEN"------>%s\n"_NC, line_split[1]);
 	if (*path_ptr == NULL)
 	{
 		*path_ptr = ft_strdup(line_split[1]);
 		g->valid_parameter_count++;
-		// printf(_RED"\n%s\n"_NC, *path_ptr);
 	}
 	else
 		append_error(g, line_split[0], " : path already set\n");
 }
 
-int		check_open_texture(char *file, t_global *g)
-{
-	int fd;
-
-	fd = open(file, O_RDONLY);
-	if (fd < 0)
-	{
-		append_error(g, file, " : impossible to open it !\n");
-		return (1);
-	}
-	if (fd >= 0)
-		close(fd);
-	fd = open(file, O_DIRECTORY);
-    if (!(fd < 0))
-	{
-		append_error(g, file, " : file is directory\n");
-		return (1);
-	}
-	if (fd >= 0)
-    	close(fd);
-	return (0);
-}
-
-void		parse_line_paths(char **line_split, t_global *g)
+void	parse_line_paths(char **line_split, t_global *g)
 {
 	if (!line_split)
 		return ;
