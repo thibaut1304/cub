@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:06:33 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/03 11:33:54 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/03 17:48:13 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static	void	fetch_arguments(char *line, t_global *g)
 		append_error(g, line_split[0], " : too many arguments\n");
 	if (arg_count == 2)
 		parse_line_paths(line_split, g);
-	if ((g->valid_parameter_count == 7 || g->valid_parameter_count == 6)
+	if ((g->valid_parameter_count == 6 || g->valid_parameter_count == 5)
 		&& !g->in_map && !*line)
 	{
 		g->new_line = 1;
@@ -40,11 +40,13 @@ static	void	fetch_arguments(char *line, t_global *g)
 
 static void	check_parameter_count_and_map(t_global *g)
 {
-	if ((g->valid_parameter_count != 7 && g->nb_texture == 5)
-		|| (g->valid_parameter_count != 6 && g->nb_texture == 4))
-		append_error(g, "", "Not enough valid parameters\n");
+	if (g->error)
+		return ;
 	if (!g->new_line)
 		append_error(g, "", "Not new line after parameters\n");
+	else if (g->valid_parameter_count != 7 && g->valid_parameter_count != 6)
+		append_error(g, "", "Not enough valid parameters\n");
+
 	else if (*(g->tab) == NULL)
 		append_error(g, "", "No map found\n");
 }

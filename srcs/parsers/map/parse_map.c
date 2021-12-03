@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:06:09 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/03 11:05:52 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/03 17:37:38 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,8 @@ void	parse_map(char *line, int fd, t_global *g, t_list **list)
 	fetch_map(g, line, fd, list);
 	if (!count_grid(g, *list))
 		ft_lstclear(list, &ft_del_list);
+	if (g->error)
+		return ;
 	process_map(g);
 	check_player(g);
 }

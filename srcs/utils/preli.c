@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 14:36:06 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/03 14:44:35 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/03 17:32:58 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,14 @@
 
 static void	check_open_texture_norm(t_global *g)
 {
-	check_open_texture(g->map_textures.north_texture_path, g);
-	check_open_texture(g->map_textures.south_texture_path, g);
-	check_open_texture(g->map_textures.west_texture_path, g);
-	check_open_texture(g->map_textures.east_texture_path, g);
+	if (g->map_textures.north_texture_path)
+		check_open_texture(g->map_textures.north_texture_path, g);
+	if (g->map_textures.south_texture_path)
+		check_open_texture(g->map_textures.south_texture_path, g);
+	if (g->map_textures.west_texture_path)
+		check_open_texture(g->map_textures.west_texture_path, g);
+	if (g->map_textures.east_texture_path)
+		check_open_texture(g->map_textures.east_texture_path, g);
 }
 
 void	preliminaire(t_global *g)
