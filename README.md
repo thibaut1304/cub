@@ -1,6 +1,6 @@
 # cub
 
---> Verifier extension texture
+--> Verifier extension texture --> ok
 
 --> Trouver une solution pour enlever l'erreur file directory -1 --> OKAY MERCI ALICE !
 

@@ -6,7 +6,7 @@
 #    By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/15 22:24:05 by thhusser          #+#    #+#              #
-#    Updated: 2021/12/03 11:28:50 by thhusser         ###   ########.fr        #
+#    Updated: 2021/12/03 14:45:33 by thhusser         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ SRCS_FILES	= \
 				utils/is_in_charset.c \
 				utils/number_of_args.c \
 				list_map.c \
+				utils/preli.c \
 				
 
 CC			=	clang

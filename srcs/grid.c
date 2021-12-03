@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 16:31:02 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/02 16:31:05 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/03 14:29:05 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	init_grid(t_global *cub)
 
 void	free_grid(t_global *cub)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (++i < cub->data.rows)

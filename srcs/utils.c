@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 16:32:29 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/02 16:32:31 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/03 14:57:13 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ float	normalize(float ray_ang)
 	return (ray_ang);
 }
 
-int		grid_is_wall(float x, float y, t_global *cub)
+int	grid_is_wall(float x, float y, t_global *cub)
 {
-	int grid_x;
-	int grid_y;
+	int	grid_x;
+	int	grid_y;
 
 	if (x < 0 || x > cub->win.wid || y < 0 || y > cub->win.hei)
 		return (1);
@@ -42,9 +42,9 @@ float	p_dist(float x1, float y1, float x2, float y2)
 	return (sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1)));
 }
 
-int		grep_color(t_text text, int x, int y)
+int	grep_color(t_text text, int x, int y)
 {
-	char *dst;
+	char	*dst;
 
 	if (x < 0)
 		x = 0;
@@ -55,5 +55,5 @@ int		grep_color(t_text text, int x, int y)
 	if (y > text.hei)
 		y = text.hei;
 	dst = text.data + (y * text.line_length + x * text.bits_per_pixel / 8);
-	return (*(unsigned int*)dst);
+	return (*(unsigned int *)dst);
 }

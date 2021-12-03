@@ -6,15 +6,15 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 10:58:56 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/03 10:58:58 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/03 14:30:06 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
-static int key_space(int key, t_global *cub)
+static int	key_space(int key, t_global *cub)
 {
-	static int val = 0;
+	static int	val = 0;
 
 	if (key == 32)
 	{
@@ -33,7 +33,7 @@ static int key_space(int key, t_global *cub)
 	return (0);
 }
 
-int		key_pressed(int key, t_global *cub)
+int	key_pressed(int key, t_global *cub)
 {
 	if (key_space(key, cub))
 		return (0);
@@ -56,10 +56,10 @@ int		key_pressed(int key, t_global *cub)
 	return (0);
 }
 
-int		key_released(int key, t_player *player)
+int	key_released(int key, t_player *player)
 {	
-	if (key == KEY_Z || key == KEY_S || key == KEY_UP ||
-			key == KEY_DOWN || key == KEY_W)
+	if (key == KEY_Z || key == KEY_S || key == KEY_UP
+		|| key == KEY_DOWN || key == KEY_W)
 		player->walk_d = 0;
 	else if (key == KEY_LEFT || key == KEY_RIGHT)
 		player->turn_d = 0;

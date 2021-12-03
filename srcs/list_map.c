@@ -6,16 +6,16 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 05:40:15 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/03 01:27:25 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/03 14:31:01 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
-int		count_grid(t_global *g, t_list *grid)
+int	count_grid(t_global *g, t_list *grid)
 {
-	int column;
-	int rows;
+	int	column;
+	int	rows;
 
 	column = count_cols(grid);
 	rows = ft_lstsize(grid);
@@ -40,7 +40,7 @@ int		count_grid(t_global *g, t_list *grid)
 
 void	convert_grid(t_global *g, t_list *list)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (list)
@@ -52,10 +52,10 @@ void	convert_grid(t_global *g, t_list *list)
 	ft_lstclear(&list, &ft_del_list);
 }
 
-int		count_cols(t_list *grid)
+int	count_cols(t_list *grid)
 {
-	int max;
-	int i;
+	int	max;
+	int	i;
 
 	max = 0;
 	while (grid)

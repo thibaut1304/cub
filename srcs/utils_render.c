@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 16:32:15 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/02 16:32:18 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/03 15:41:29 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	my_mlx_pixel_put(t_win *win, int x, int y, int color)
 
 	if (x >= 0 && x <= win->wid && y >= 0 && y <= win->hei)
 	{
-		dst = win->img.addr + (y * win->img.line_length + x *
-				(win->img.bits_per_pixel / 8));
-		*(unsigned int*)dst = color;
+		dst = win->img.addr + (y * win->img.line_length + x
+				* (win->img.bits_per_pixel / 8));
+		*(unsigned int *)dst = color;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 16:30:41 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/02 16:30:43 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/03 14:24:53 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ void	cast_all_rays(t_global *cub)
 	i = -1;
 	while (++i < cub->win.wid)
 	{
-		ray_ang = cub->player.rot_ang + atan((i - cub->win.wid / 2) /
-				cub->data.dist_pplane);
+		ray_ang = cub->player.rot_ang + atan((i - cub->win.wid / 2)
+				/ cub->data.dist_pplane);
 		cub->rays[i].ray_ang = normalize(ray_ang);
 		init_ray(&cub->rays[i], cub->rays[i].ray_ang);
 		cub->rays[i] = cast(cub->rays[i], cub);

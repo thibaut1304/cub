@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 16:31:38 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/03 10:20:27 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/03 14:39:23 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,26 +26,17 @@ void	init_player(t_player *player)
 
 void	update(t_global *cub, t_player *player)
 {
-	float mov_step;
-	float lateral_ang;
-	float new_x;
-	float new_y;
+	float	mov_step;
+	float	lateral_ang;
+	float	new_x;
+	float	new_y;
 
 	player->rot_ang += player->turn_d * player->rot_speed;
 	player->rot_ang = normalize(player->rot_ang);
 	mov_step = player->walk_d * player->mov_speed;
 	new_x = player->pos.x + cos(player->rot_ang) * mov_step;
 	new_y = player->pos.y + sin(player->rot_ang) * mov_step;
-	if (player->turn_d != 0 && player->lateral_d != 0)
-	{
-		mov_step = player->walk_d * player->mov_speed;
-		new_x = player->pos.x + cos(player->rot_ang) * mov_step;
-		new_y = player->pos.y + sin(player->rot_ang) * mov_step;
-		lateral_ang = player->rot_ang + ((M_PI / 2) * player->lateral_d);
-		new_x += player->pos.x + cos(lateral_ang) * player->mov_speed;
-		new_y += player->pos.y + sin(lateral_ang) * player->mov_speed;
-	}
-	else if (player->lateral_d != 0)
+	if (player->lateral_d != 0)
 	{
 		lateral_ang = player->rot_ang + ((M_PI / 2) * player->lateral_d);
 		new_x = player->pos.x + cos(lateral_ang) * player->mov_speed;

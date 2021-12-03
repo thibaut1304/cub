@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 16:29:46 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/03 11:25:13 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/03 14:44:32 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,6 +223,10 @@ int				ft_is_number(char *str);
 int				is_in_charset(char c, char *charset);
 int				number_of_args(char **line);
 void 			print_map(t_global *g);
+void			ft_init_textures_map(t_map_textures *text);
+void			init_cub(t_global *cub, char *map);
+int				is_valid_file(char *file, char *str);
+void			preliminaire(t_global *g);
 
 //error
 void			record_error(t_global *g, char *str);
