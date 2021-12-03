@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 16:31:58 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/03 15:11:14 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/03 16:27:35 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,15 @@ void	init_ray(t_ray *ray, float ray_ang)
 	ray->wall_hit_y = 0;
 	ray->dist = 0;
 	ray->was_vt_hit = 0;
-	ray->is_down = ray_ang > 0 && ray_ang < M_PI;
+	if (ray_ang > 0 && ray_ang < M_PI)
+		ray->is_down = 1;
+	else
+		ray->is_down = 0;
 	ray->is_up = !ray->is_down;
-	ray->is_right = ray_ang < 0.5 * M_PI || ray_ang > 1.5 * M_PI;
+	if (ray_ang < 0.5 * M_PI || ray_ang > 1.5 * M_PI)
+		ray->is_right = 1;
+	else
+		ray->is_right = 0;
 	ray->is_left = !ray->is_right;
 }
 
