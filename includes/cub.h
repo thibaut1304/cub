@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 16:29:46 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/03 14:44:32 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/03 16:33:21 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,14 @@
 # define FOV 1.04719755
 # define TEXT 5
 
-typedef struct	s_pos
+typedef struct s_pos
 {
 	float		x;
 	float		y;
 }				t_pos;
 
 /* 0 == nord : 1 == sud : 2 == est : 3 == ouest : 4 == sprite*/
-typedef struct	s_player
+typedef struct s_player
 {
 	int			lateral_d;
 	float		mov_speed;
@@ -65,7 +65,7 @@ typedef struct	s_player
 	t_pos		pos;
 }				t_player;
 
-typedef struct	s_img
+typedef struct s_img
 {
 	int			bits_per_pixel;
 	int			line_length;
@@ -76,13 +76,13 @@ typedef struct	s_img
 	int			hei;
 }				t_img;
 
-typedef struct	s_line
+typedef struct s_line
 {
 	t_pos		start;
 	t_pos		end;
 }				t_line;
 
-typedef struct	s_win
+typedef struct s_win
 {
 	int			tot_rays;
 	void		*mlx_p;
@@ -93,7 +93,7 @@ typedef struct	s_win
 	int			wid;
 }				t_win;
 
-typedef struct	s_dcast
+typedef struct s_dcast
 {
 	int			found_wall;
 	float		xinter;
@@ -106,7 +106,7 @@ typedef struct	s_dcast
 	float		hit_y;
 }				t_dcast;
 
-typedef struct	s_ray
+typedef struct s_ray
 {
 	int			found_hz_wall;
 	int			found_vt_wall;
@@ -127,7 +127,7 @@ typedef struct	s_ray
 	int			id;
 }				t_ray;
 
-typedef struct	s_text
+typedef struct s_text
 {
 	int				bits_per_pixel;
 	int				line_length;
@@ -139,7 +139,7 @@ typedef struct	s_text
 	int				hei;
 }				t_text;
 
-typedef struct	s_data
+typedef struct s_data
 {
 	float			dist_pplane;
 	int				grid_flag;
@@ -152,7 +152,7 @@ typedef struct	s_data
 	int				res;
 }				t_data;
 
-typedef struct	s_sprt
+typedef struct s_sprt
 {
 	int			visibility;
 	int			texture;
@@ -168,16 +168,16 @@ typedef struct	s_sprt
 
 typedef struct s_map_textures
 {
-	char *north_texture_path;
-	char *south_texture_path;
-	char *east_texture_path;
-	char *west_texture_path;
-	char *sprite_texture_path;
-	int floor_color;
-	int ceiling_color;
+	char	*north_texture_path;
+	char	*south_texture_path;
+	char	*east_texture_path;
+	char	*west_texture_path;
+	char	*sprite_texture_path;
+	int		floor_color;
+	int		ceiling_color;
 }				t_map_textures;
 
-typedef struct		s_global
+typedef struct s_global
 {
 	t_list			*error;
 	t_list			*list;
@@ -196,12 +196,12 @@ typedef struct		s_global
 	int				sprt_load;
 	int				mlx_load;
 	int				nb_error;
-	t_map_textures 	map_textures;
-	int 			number_rows;
-	int 			number_columns;
+	t_map_textures	map_textures;
+	int				number_rows;
+	int				number_columns;
 	int				nb_player;
 	int				pos_player;
-	int 			fd;
+	int				fd;
 }					t_global;
 
 //parseur
@@ -222,7 +222,7 @@ char			**dual_realloc(char **double_ptr, char *line);
 int				ft_is_number(char *str);
 int				is_in_charset(char c, char *charset);
 int				number_of_args(char **line);
-void 			print_map(t_global *g);
+void			print_map(t_global *g);
 void			ft_init_textures_map(t_map_textures *text);
 void			init_cub(t_global *cub, char *map);
 int				is_valid_file(char *file, char *str);
@@ -235,7 +235,7 @@ void			append_error(t_global *g, char *id, char *message);
 
 //texture
 void			load_new_texture(t_global *g);
-void 			free_old_texture(t_global *g, int nb_textures);
+void			free_old_texture(t_global *g, int nb_textures);
 void			init_texture(t_text *textures);
 void			load_texture(t_global *g);
 
@@ -272,7 +272,7 @@ t_ray			cast(t_ray ray, t_global *cub);
 void			select_texture(t_ray *rays, float hz_dist, float vt_dist);
 float			find_ray_dist(float hz_dist, float vt_dist);
 float			find_ray_hit(float hz_dist, float vt_dist, float hz_hit,
-		float vt_hit);
+					float vt_hit);
 void			hz_cast(t_ray *ray, t_global *cub, int i);
 void			vt_cast(t_ray *ray, t_global *cub, int i);
 t_dcast			fill_hz_data(t_global *cub, t_ray *ray);
