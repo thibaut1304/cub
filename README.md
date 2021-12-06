@@ -13,3 +13,5 @@
 -->supprimer 2 dans la map --> ok
 
 -->verifier prototype cub
+
+--> si un eligne vide dans la map plusieurs erreurs

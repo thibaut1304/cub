@@ -6,13 +6,13 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 16:32:29 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/06 12:10:16 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/06 12:29:25 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
-void	free_old_texture_norm(t_global *g, int nb_texture)
+void	free_old_texture_norm(t_global *g, int nb_textures)
 {
 	if (g->map_textures.west_texture_path)
 	{

@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 16:31:31 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/06 10:46:00 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/06 12:15:48 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	main(int argc, char **argv)
 		if (is_valid_file(argv[1], ".cub"))
 			init_cub(&cub, argv[1]);
 		else
-			ft_putstr("Is not a '.cub' file\n");
+			ft_putstr("Error\nIs not a '.cub' file\n");
 	}
 	else
 		ft_putstr("Error\nBad numbers of arguments\n");

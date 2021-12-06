@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 15:52:33 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/01 19:26:27 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/06 12:31:38 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ void	print_error(t_list *error)
 	char	*line;
 
 	line = NULL;
+	ft_putstr("Error\n");
 	while (error)
 	{
 		line = ft_strdup(error->content);
-		ft_putstr("Error\n");
 		ft_putstr(line);
 		free(line);
 		error = error->next;
