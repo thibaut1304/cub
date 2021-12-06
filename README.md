@@ -14,4 +14,13 @@
 
 -->verifier prototype cub
 
---> si un eligne vide dans la map plusieurs erreurs
+--> object pfilo a la compilation makefile --> ok
+
+--> Erreur map derniere ligne
+
+--> segfault texture qui n'exite pas --> ok
+
+--> saut a la ligne entre les parametre texture et pas map et sa marche quand meme -->
+
+--> probleme dossier en parametre map --> ok
+

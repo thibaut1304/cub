@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 16:31:49 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/06 14:58:21 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/06 15:01:13 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,10 @@ void	free_texture(t_global *cub)
 	{
 		while (++i < cub->nb_texture)
 		{
-			printf(_GREEN"%s\n"_NC, cub->text[i].name);
 			if (cub->text[i].name)
 			{
-				printf(_GREEN"%s\n"_NC, cub->text[i].name);
 				free(cub->text[i].name);
 				cub->text[i].name = NULL;
-				printf("OK\n");
 			}
 			if (cub->text[i].ptr)
 			{

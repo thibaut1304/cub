@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:06:33 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/06 12:07:07 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/06 15:10:39 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ static	void	fetch_arguments(char *line, t_global *g)
 		append_error(g, line_split[0], " : too many arguments\n");
 	if (arg_count == 2)
 		parse_line_paths(line_split, g);
-	if ((g->valid_parameter_count == 6 || g->valid_parameter_count == 5)
-		&& !g->in_map && !*line)
+	if (g->valid_parameter_count == 6 && !g->in_map && !*line)
 	{
 		g->new_line = 1;
 	}
@@ -44,7 +43,7 @@ static void	check_parameter_count_and_map(t_global *g)
 		return ;
 	if (!g->new_line && g->valid_parameter_count == 6)
 		append_error(g, "", "Not new line after parameters\n");
-	else if (g->valid_parameter_count != 7 && g->valid_parameter_count != 6)
+	else if (g->valid_parameter_count != 6)
 		append_error(g, "", "Not enough valid parameters\n");
 	else if (g->tab == NULL)
 		append_error(g, "", "No map found\n");
