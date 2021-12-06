@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:06:33 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/06 15:10:39 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/06 17:47:50 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static	void	fetch_arguments(char *line, t_global *g)
 	arg_count = number_of_args(line_split);
 	if (arg_count == 1)
 		append_error(g, line_split[0], " : not enough arguments\n");
-	if (arg_count > 3)
+	if (arg_count > 2)
 		append_error(g, line_split[0], " : too many arguments\n");
 	if (arg_count == 2)
 		parse_line_paths(line_split, g);
