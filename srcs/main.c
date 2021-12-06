@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 16:31:31 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/06 18:27:02 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/06 19:28:28 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static int	check_dir_map(char *file)
 		close(fd);
 	fd = open(file, O_DIRECTORY);
 	if (!(fd < 0))
-		return (1);
+		return (2);
 	if (fd >= 0)
 		close(fd);
 	return (0);
@@ -92,8 +92,10 @@ int	main(int argc, char **argv)
 	{
 		if (is_valid_file(argv[1], ".cub") && !check_dir_map(argv[1]))
 			init_cub(&cub, argv[1]);
-		else if (check_dir_map(argv[1]))
+		else if (check_dir_map(argv[1]) == 2)
 			ft_putstr("Error\nThe parameter is a directory\n");
+		else if (check_dir_map(argv[1]) == 1)
+			ft_putstr("Error\nWe can't open the map\n");
 		else
 			ft_putstr("Error\nIs not a '.cub' file\n");
 	}
