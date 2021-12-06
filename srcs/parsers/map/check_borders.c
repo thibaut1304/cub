@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:05:53 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/06 16:08:30 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/06 16:37:41 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,30 +59,27 @@ static int	check_left_and_right(char **map, int largest_line, t_global *g)
 
 static int	check_neight(char **map, int x, int y)
 {
-                                                                                                                            	if (map[x + 1][y] != '1' && map[x - 1][y] != '1' && map[x][y - 1] != '1' && map[x][y + 1] != '1')
-		return (1);
-	return (0);
+	if (is_in_charset(map[x + 1][y], "1NSEW0") && is_in_charset(map[x - 1][y], "1NSEW0") && is_in_charset(map[x][y - 1], "1NSEW0") && is_in_charset(map[x][y + 1], "1NSEW0"))
+		return (0);
+	return (1);
 }
 
 static int	check_zero_map(char **map, t_global *g)
 {
 	int	i;
 	int	y;
-	int	flag;
 
 	i = -1;
-	flag = 0;
-	
 	while (++i < g->number_rows)
 	{
 		y = -1;
 		while (++y < g->number_columns)
 		{
-			if (map[i][y] == '0')
+			if (is_in_charset(map[i][y], "0NSEW"))
 			{
-				if (i == 0 || y == 0 || i == g->number_rows - 1 || y == g->number_columns - 1)
+				if (i == 0 || y == 0 || i == g->number_rows - 1
+					|| y == g->number_columns - 1 || check_neight(map, i, y))
 					return (1);
-				flag += check_neight(map, i, y);
 			}
 		}
 	}
