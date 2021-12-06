@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 16:31:31 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/03 17:39:55 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/06 10:46:00 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	end_cub(t_global *cub)
 {
 	free_texture(cub);
+	free_old_texture(cub, TEXT);
 	if (cub->ray_load == 1)
 		free(cub->rays);
 	if (cub->data.rows)

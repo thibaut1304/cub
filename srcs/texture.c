@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 16:31:49 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/03 17:37:07 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/06 10:52:27 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,33 @@
 
 void	free_old_texture(t_global *g, int nb_textures)
 {
-	free(g->map_textures.north_texture_path);
-	g->map_textures.north_texture_path = NULL;
-	free(g->map_textures.south_texture_path);
-	g->map_textures.south_texture_path = NULL;
-	free(g->map_textures.east_texture_path);
-	g->map_textures.east_texture_path = NULL;
-	free(g->map_textures.west_texture_path);
-	g->map_textures.west_texture_path = NULL;
+	if (g->map_textures.north_texture_path)
+	{
+		free(g->map_textures.north_texture_path);
+		g->map_textures.north_texture_path = NULL;
+	}
+	if (g->map_textures.south_texture_path)
+	{
+		free(g->map_textures.south_texture_path);
+		g->map_textures.south_texture_path = NULL;
+	}
+	if (g->map_textures.east_texture_path)
+	{
+		free(g->map_textures.east_texture_path);
+		g->map_textures.east_texture_path = NULL;
+	}
+	if (g->map_textures.west_texture_path)
+	{
+		free(g->map_textures.west_texture_path);
+		g->map_textures.west_texture_path = NULL;
+	}	
 	if (nb_textures == TEXT)
 	{
-		free(g->map_textures.sprite_texture_path);
-		g->map_textures.sprite_texture_path = NULL;
+		if (g->map_textures.sprite_texture_path)
+		{
+			free(g->map_textures.sprite_texture_path);
+			g->map_textures.sprite_texture_path = NULL;
+		}
 	}
 }
 
@@ -60,7 +75,11 @@ void	free_texture(t_global *cub)
 			cub->text[i].data = NULL;
 		}
 	}
-	free(cub->text);
+	if (cub->text)
+	{
+		free(cub->text);
+		cub->text = NULL;
+	}
 }
 
 static int	load_texture_norm(t_global *g)

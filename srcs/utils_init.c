@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 16:31:58 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/03 16:27:35 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/06 11:02:04 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ void	init_cub(t_global *cub, char *map)
 	init_player(&cub->player);
 	ft_init_textures_map(&cub->map_textures);
 	cub->error = NULL;
+	cub->text = NULL;
+	cub->tab = NULL;
 	cub->nb_texture = 0;
 	cub->valid_parameter_count = 0;
 	cub->new_line = 0;

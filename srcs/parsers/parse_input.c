@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:06:33 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/03 17:48:13 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/06 11:56:50 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,23 @@ static void	check_parameter_count_and_map(t_global *g)
 {
 	if (g->error)
 		return ;
-	if (!g->new_line)
+	if (!g->new_line && g->valid_parameter_count == 6)
 		append_error(g, "", "Not new line after parameters\n");
 	else if (g->valid_parameter_count != 7 && g->valid_parameter_count != 6)
 		append_error(g, "", "Not enough valid parameters\n");
 
-	else if (*(g->tab) == NULL)
+	else if (g->tab == NULL)
 		append_error(g, "", "No map found\n");
+}
+
+static void ft_del_line(char *line)
+{
+	if (line)
+	{
+		printf(_RED"Line is not NULL\n"_NC);
+		free(line);
+		line = NULL;
+	}
 }
 
 void	parse_input(t_global *g, char *file, t_list **list)
@@ -57,6 +67,7 @@ void	parse_input(t_global *g, char *file, t_list **list)
 	int		res;
 
 	res = 1;
+	line = NULL;
 	g->fd = open(file, O_RDONLY);
 	if (g->fd < 0)
 	{
@@ -73,9 +84,10 @@ void	parse_input(t_global *g, char *file, t_list **list)
 			break ;
 		}
 		fetch_arguments(line, g);
-		ft_del_list(line);
+		ft_del_line(line);
 	}
 	check_parameter_count_and_map(g);
-	ft_del_list(line);
+	if (g->in_map)
+		ft_del_line(line);
 	close(g->fd);
 }
