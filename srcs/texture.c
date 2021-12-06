@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 16:31:49 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/06 12:09:26 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/06 14:58:21 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,24 +49,30 @@ void	free_texture(t_global *cub)
 	int	i;
 
 	i = -1;
-	while (++i < cub->nb_texture)
-	{
-		if (cub->text[i].name)
-		{
-			free(cub->text[i].name);
-			cub->text[i].name = NULL;
-		}
-		if (cub->text[i].ptr)
-		{
-			mlx_destroy_image(cub->win.mlx_p, cub->text[i].ptr);
-			cub->text[i].ptr = NULL;
-			cub->text[i].data = NULL;
-		}
-	}
 	if (cub->text)
 	{
-		free(cub->text);
-		cub->text = NULL;
+		while (++i < cub->nb_texture)
+		{
+			printf(_GREEN"%s\n"_NC, cub->text[i].name);
+			if (cub->text[i].name)
+			{
+				printf(_GREEN"%s\n"_NC, cub->text[i].name);
+				free(cub->text[i].name);
+				cub->text[i].name = NULL;
+				printf("OK\n");
+			}
+			if (cub->text[i].ptr)
+			{
+				mlx_destroy_image(cub->win.mlx_p, cub->text[i].ptr);
+				cub->text[i].ptr = NULL;
+				cub->text[i].data = NULL;
+			}
+		}
+		if (cub->text)
+		{
+			free(cub->text);
+			cub->text = NULL;
+		}
 	}
 }
 

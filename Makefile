@@ -6,7 +6,7 @@
 #    By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/15 22:24:05 by thhusser          #+#    #+#              #
-#    Updated: 2021/12/03 14:45:33 by thhusser         ###   ########.fr        #
+#    Updated: 2021/12/06 14:40:05 by thhusser         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,7 @@ OBJS		= ${SRCS:.c=.o}
 RM 			= rm -f
 
 .c.o:
-				@printf "$(_WHITE)Generating philo objects... %-33.33s\r$(_NC)" $@
+				@printf "$(_WHITE)Generating $(NAME) objects... %-33.33s\r$(_NC)" $@
 				@clang ${FLAGS} ${HEADER} -c $< -o $(<:.c=.o)
 
 all:		${NAME}
@@ -73,29 +73,6 @@ $(NAME): 	${OBJS}
 			@echo ""
 			@$(CC) $(FLAGS) -g $(HEADER) $(OBJS) -o $(NAME) -L ${PATH_LIBFT} -lft -L ${PATH_MLX} -lmlx -lXext -lX11 -lm
 			@echo "$(_GREEN)Generating $(NAME)$(_NC)"
-
-exec:		${NAME}
-			@clear
-			@echo "Creating and executing ./$(NAME)"
-			@echo "#####################################"
-			@./${NAME} assets/small_map.cub
-
-# execv:		${NAME}
-#			@$(CC) $(FLAGS) -g $(HEADER) $(OBJS) -o $(NAME) -L ${PATH_LIBFT} -lft -L ${PATH_MLX} -lmlx -lXext -lX11 -lm
-# 			@echo "Creating and executing ./cub3D"
-# 			@echo "#####################################"
-# 			@echo "# SANITIZING [LLDB].................#"
-# 			@echo "#####################################"
-# 			@~/.local/bin/colour-valgrind -v --show-leak-kinds=all --tool=memcheck --leak-check=full  --track-origins=yes ./${NAME} assets/map.cub
-# # 			valgrind --show-leak-kinds=all --leak-check=full --track-origins=yes ./${NAME} assets/small_map.cub
-
-# execf:		${NAME}
-# 			@$(CC) -g -fsanitize=address $(FLAGS) $(HEADER) $(OBJS) -o $(NAME) -L ${PATH_LIBFT} -lft -L ${PATH_MLX} -lmlx -lXext -lX11 -lm
-# 			@echo "Creating and executing ./cub3D"
-# 			@echo "#####################################"
-# 			@echo "# SANITIZING [FSANITIZE ADDRESS]....#"
-# 			@echo "#####################################"
-# 			@./${NAME} assets/small_map.cub
 
 clean:
 			@make clean -C ./libft
