@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 16:31:58 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/06 11:02:04 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/06 12:06:53 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	init_cub(t_global *cub, char *map)
 	cub->valid_parameter_count = 0;
 	cub->new_line = 0;
 	cub->in_map = 0;
+	cub->res = 1;
 	cub->ray_load = 0;
 	cub->sprt_load = 0;
 	cub->mlx_load = 0;

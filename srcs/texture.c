@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 16:31:49 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/06 10:52:27 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/06 12:09:26 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,7 @@ void	free_old_texture(t_global *g, int nb_textures)
 		free(g->map_textures.east_texture_path);
 		g->map_textures.east_texture_path = NULL;
 	}
-	if (g->map_textures.west_texture_path)
-	{
-		free(g->map_textures.west_texture_path);
-		g->map_textures.west_texture_path = NULL;
-	}	
-	if (nb_textures == TEXT)
-	{
-		if (g->map_textures.sprite_texture_path)
-		{
-			free(g->map_textures.sprite_texture_path);
-			g->map_textures.sprite_texture_path = NULL;
-		}
-	}
+	free_old_texture_norm(g, nb_textures);
 }
 
 void	init_texture(t_text *textures)

@@ -6,11 +6,28 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 16:32:29 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/03 14:57:13 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/06 12:10:16 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
+
+void	free_old_texture_norm(t_global *g, int nb_texture)
+{
+	if (g->map_textures.west_texture_path)
+	{
+		free(g->map_textures.west_texture_path);
+		g->map_textures.west_texture_path = NULL;
+	}	
+	if (nb_textures == TEXT)
+	{
+		if (g->map_textures.sprite_texture_path)
+		{
+			free(g->map_textures.sprite_texture_path);
+			g->map_textures.sprite_texture_path = NULL;
+		}
+	}
+}
 
 float	normalize(float ray_ang)
 {

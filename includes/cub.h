@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 16:29:46 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/06 10:53:41 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/06 12:09:46 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,6 +202,7 @@ typedef struct s_global
 	int				nb_player;
 	int				pos_player;
 	int				fd;
+	int				res;
 }					t_global;
 
 //parseur
@@ -227,6 +228,7 @@ void			ft_init_textures_map(t_map_textures *text);
 void			init_cub(t_global *cub, char *map);
 int				is_valid_file(char *file, char *str);
 void			preliminaire(t_global *g);
+void			free_old_texture_norm(t_global *g, int nb_texture);
 
 //error
 void			record_error(t_global *g, char *str);

@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:06:33 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/06 11:56:50 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/06 12:07:07 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,14 @@ static void	check_parameter_count_and_map(t_global *g)
 		append_error(g, "", "Not new line after parameters\n");
 	else if (g->valid_parameter_count != 7 && g->valid_parameter_count != 6)
 		append_error(g, "", "Not enough valid parameters\n");
-
 	else if (g->tab == NULL)
 		append_error(g, "", "No map found\n");
 }
 
-static void ft_del_line(char *line)
+static void	ft_del_line(char *line)
 {
 	if (line)
 	{
-		printf(_RED"Line is not NULL\n"_NC);
 		free(line);
 		line = NULL;
 	}
@@ -64,9 +62,7 @@ static void ft_del_line(char *line)
 void	parse_input(t_global *g, char *file, t_list **list)
 {
 	char	*line;
-	int		res;
 
-	res = 1;
 	line = NULL;
 	g->fd = open(file, O_RDONLY);
 	if (g->fd < 0)
@@ -74,10 +70,10 @@ void	parse_input(t_global *g, char *file, t_list **list)
 		append_error(g, "", "Cannot open map\n");
 		return ;
 	}
-	while (res > 0)
+	while (g->res > 0)
 	{
-		res = get_next_line(g->fd, &line);
-		if (detect_map_line(line) && res != 0)
+		g->res = get_next_line(g->fd, &line);
+		if (detect_map_line(line) && g->res != 0)
 		{
 			g->in_map = 1;
 			parse_map(line, g->fd, g, list);
