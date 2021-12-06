@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 16:31:31 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/06 12:15:48 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/06 14:04:29 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,14 +67,33 @@ void	run_cub(t_global *cub)
 	mlx_loop(cub->win.mlx_p);
 }
 
+static int	check_dir_map(char *file)
+{
+	int	fd;
+
+	fd = open(file, O_RDONLY);
+	if (fd < 0)
+		return (1);
+	if (fd >= 0)
+		close(fd);
+	fd = open(file, O_DIRECTORY);
+	if (!(fd < 0))
+		return (1);
+	if (fd >= 0)
+		close(fd);
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_global	cub;
 
 	if (argc == 2)
 	{
-		if (is_valid_file(argv[1], ".cub"))
+		if (is_valid_file(argv[1], ".cub") && !check_dir_map(argv[1]))
 			init_cub(&cub, argv[1]);
+		else if (check_dir_map(argv[1]))
+			ft_putstr("Error\nThe parameter is a directory\n");
 		else
 			ft_putstr("Error\nIs not a '.cub' file\n");
 	}
