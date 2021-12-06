@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:05:53 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/06 16:07:31 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/06 16:08:30 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static int	check_left_and_right(char **map, int largest_line, t_global *g)
 
 static int	check_neight(char **map, int x, int y)
 {
-	if (map[x + 1][y] != '1' && map[x - 1][y] != '1' && map[x][y - 1] != '1' && map[x][y + 1] != '1')
+                                                                                                                            	if (map[x + 1][y] != '1' && map[x - 1][y] != '1' && map[x][y - 1] != '1' && map[x][y + 1] != '1')
 		return (1);
 	return (0);
 }
