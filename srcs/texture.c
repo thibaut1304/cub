@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 16:31:49 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/06 15:01:13 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/06 17:22:46 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,9 @@ static int	load_texture_norm(t_global *g)
 	if (g->map_textures.south_texture_path)
 		g->text[1].name = ft_strdup(g->map_textures.south_texture_path);
 	if (g->map_textures.west_texture_path)
-		g->text[3].name = ft_strdup(g->map_textures.west_texture_path);
+		g->text[2].name = ft_strdup(g->map_textures.west_texture_path);
 	if (g->map_textures.east_texture_path)
-		g->text[2].name = ft_strdup(g->map_textures.east_texture_path);
+		g->text[3].name = ft_strdup(g->map_textures.east_texture_path);
 	if (g->nb_texture == TEXT && g->map_textures.sprite_texture_path)
 		g->text[4].name = ft_strdup(g->map_textures.sprite_texture_path);
 	return (0);

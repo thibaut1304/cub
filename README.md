@@ -8,7 +8,7 @@
 
 --> Verifier parsing erreur et leaks --> Mok
 
---> verifier texture nord ...
+--> verifier texture nord ... --> ok
 
 -->supprimer 2 dans la map --> ok
 
@@ -16,7 +16,7 @@
 
 --> object pfilo a la compilation makefile --> ok
 
---> Erreur map derniere ligne
+--> Erreur map derniere ligne --> ok
 
 --> segfault texture qui n'exite pas --> ok
 
