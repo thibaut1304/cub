@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:06:09 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/03 17:37:38 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/06 19:23:03 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,14 @@ static void	fetch_map(t_global *g, char *line, int fd, t_list **list)
 	while (res > 0)
 	{
 		res = get_next_line(fd, &line);
-		if (detect_map_line(line) == 0)
+		if (!detect_map_line(line) || *line == '\0')
 		{
-			if (*line != '\0')
-				append_error(g, "", "Invalid map, wrong data\n");
+			append_error(g, "", "Invalid map, wrong data\n");
 			free(line);
 			line = NULL;
 			break ;
 		}
-		if (*line != 0)
+		if (*line != '\0' && detect_map_line(line))
 			recovery_map(g, line, list);
 		free(line);
 		line = NULL;
