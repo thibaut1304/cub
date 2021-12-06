@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:06:00 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/03 11:02:56 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/06 16:03:00 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	check_neighbour(char **map, int x, int y, char c)
 		y--;
 	if (c == 'E')
 		y++;
-	if ((map[x][y] == ' ' || map[x][y] == '1'))
+	if (map[x][y] == ' ' || map[x][y] == '1')
 		return (1);
 	return (0);
 }
@@ -64,7 +64,7 @@ int	check_walls(t_global *g, int row_count, int col_count)
 	while (map[++x] && x < row_count - 1)
 	{
 		y = 0;
-		while (map[x][++y] && y < col_count - 1)
+		while (map[x][++y]  && y < col_count - 1)
 			if (map[x][y] == ' ')
 				flag += check_nswe(map, x, y, row_count - 1);
 	}

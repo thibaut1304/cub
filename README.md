@@ -20,7 +20,7 @@
 
 --> segfault texture qui n'exite pas --> ok
 
---> saut a la ligne entre les parametre texture et pas map et sa marche quand meme -->
+--> saut a la ligne entre les parametre texture et pas map et sa marche quand meme --> ok
 
 --> probleme dossier en parametre map --> ok
 
