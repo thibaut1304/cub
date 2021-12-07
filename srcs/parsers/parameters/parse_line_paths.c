@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:06:17 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/03 11:36:12 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/07 16:16:18 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,43 +29,37 @@ static void	free_all(char **str)
 	str = NULL;
 }
 
-static void	rgb_to_hex(char *rgb_str, char *id, int *path_ptr, t_global *global)
+static void	rgb_to_hex(char **rp, char *id, int *path_ptr, t_global *global)
 {
 	unsigned int	t;
 	int				r;
 	int				g;
 	int				b;
-	char			**rgb_split;
 
 	t = 0;
-	rgb_split = ft_split(rgb_str, (','));
-	r = ft_atoi(rgb_split[0]);
-	g = ft_atoi(rgb_split[1]);
-	b = ft_atoi(rgb_split[2]);
+	r = ft_atoi(rp[0]);
+	g = ft_atoi(rp[1]);
+	b = ft_atoi(rp[2]);
 	if (!(r >= 0 && r < 256 && g >= 0 && g < 256 && b >= 0 && b < 256))
 		append_error(global, id, " : valid RGB range is [0 - 255]\n");
 	if (*path_ptr == -1)
 		*path_ptr = (t << 24 | r << 16 | g << 8 | b);
 	else
 		append_error(global, id, " : Already set\n");
-	free_all(rgb_split);
 	return ;
 }
 
-static void	parse_rgb(char *id, char *rgb_str, int *path_ptr, t_global *g)
+void	parse_rgb(char *id, char **rgb_split, int *path_ptr, t_global *g)
 {
-	char	**rgb_split;
-
-	rgb_split = ft_split(rgb_str, ',');
-	if (number_of_args(rgb_split) == 3)
+	if (number_of_args(rgb_split) == 4)
 	{
-		if (ft_is_number(rgb_split[0]))
+		if (ft_is_number(rgb_split[1]))
 		{
-			if (ft_is_number(rgb_split[1]))
+			if (ft_is_number(rgb_split[2]))
 			{
-				if (ft_is_number(rgb_split[2]))
+				if (ft_is_number(rgb_split[3]))
 				{
-					rgb_to_hex(rgb_str, id, path_ptr, g);
+					rgb_to_hex(rgb_split, id, path_ptr, g);
 					g->valid_parameter_count++;
 					free_all(rgb_split);
 					return ;
@@ -76,7 +70,7 @@ static void	parse_rgb(char *id, char *rgb_str, int *path_ptr, t_global *g)
 		free_all(rgb_split);
 		return ;
 	}
-	append_error(g, id, " : needs 3 numbers [0 -255]\n");
+	append_error(g, id, " : needs 3 numbers [0 - 255]\n");
 	free_all(rgb_split);
 	return ;
 }
@@ -108,10 +102,6 @@ void	parse_line_paths(char **line_split, t_global *g)
 		process_path(line_split, &(g->map_textures.east_texture_path), g);
 	else if (ft_strcmp(line_split[0], "S") == 0)
 		process_path(line_split, &(g->map_textures.sprite_texture_path), g);
-	else if (ft_strcmp(line_split[0], "F") == 0)
-		parse_rgb("F", line_split[1], &(g->data.floor), g);
-	else if (ft_strcmp(line_split[0], "C") == 0)
-		parse_rgb("C", line_split[1], &(g->data.ceil), g);
-	else
+	else if (!ft_strcmp(line_split[0], "F") && !ft_strcmp(line_split[0], "C"))
 		append_error(g, line_split[0], " wrong parameter ID\n");
 }

@@ -6,11 +6,22 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:06:33 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/07 12:55:28 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/07 16:15:28 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub.h"
+
+static	void	fetch_arguments_color(char *line, t_global *g, char *color)
+{
+	char	**line_split;
+
+	line_split = ft_split_charset(line, " ,\t");
+	if (ft_strcmp(color, "F"))
+		parse_rgb(color, line_split, &(g->data.floor), g);
+	else if (ft_strcmp(color, "C"))
+		parse_rgb(color, line_split, &(g->data.ceil), g);
+}
 
 static	void	fetch_arguments(char *line, t_global *g)
 {
@@ -22,9 +33,11 @@ static	void	fetch_arguments(char *line, t_global *g)
 	arg_count = 0;
 	line_split = ft_split(line, ' ');
 	arg_count = number_of_args(line_split);
+	if (line_split[0] && (line_split[0][0] == 'C' || line_split[0][0] == 'F'))
+		fetch_arguments_color(line, g, line_split[0]);
 	if (arg_count == 1 && !g->new_line)
 		append_error(g, line_split[0], " : not enough arguments\n");
-	if (arg_count > 2 && !g->new_line)
+	if (arg_count > 2 && !g->new_line && !is_in_charset(line_split[0][0], "FC"))
 		append_error(g, line_split[0], " : too many arguments\n");
 	if (arg_count == 2 && !g->new_line)
 		parse_line_paths(line_split, g);

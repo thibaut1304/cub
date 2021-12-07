@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 16:29:46 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/07 11:20:18 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/07 16:06:42 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,6 +214,7 @@ void	process_map(t_global *g);
 int		check_open_texture(char *file, t_global *g);
 void	parse_line_paths(char **line_split, t_global *g);
 void	parse_input(t_global *g, char *file, t_list **list);
+void	parse_rgb(char *id, char **rgb_split, int *path_ptr, t_global *g);
 
 //utils
 void	append_error(t_global *g, char *id, char *message);

@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 01:14:22 by thhusser          #+#    #+#             */
-/*   Updated: 2021/11/30 17:55:54 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/07 15:47:05 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_list
 	struct s_list	*next;
 }				t_list;
 
+char		**ft_split_charset(char *str, char *charset);
 void		ft_print_list(t_list *list);
 int			ft_is_nbr(char *str);
 long long	ft_long_atoi(const char *str);

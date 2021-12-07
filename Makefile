@@ -6,7 +6,7 @@
 #    By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/15 22:24:05 by thhusser          #+#    #+#              #
-#    Updated: 2021/12/07 12:33:45 by thhusser         ###   ########.fr        #
+#    Updated: 2021/12/07 15:03:22 by thhusser         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ SRCS_FILES	= \
 
 CC			=	clang
 
-FLAGS		= 	-Werror -Wextra -Wall -g
+FLAGS		= 	-Werror -Wextra -Wall
 
 PATH_LIBFT 	= ./libft/
 
@@ -71,7 +71,7 @@ all:		${NAME}
 $(NAME): 	${OBJS}
 			@make -C libft/
 			@echo ""
-			@$(CC) $(FLAGS) -g $(HEADER) $(OBJS) -o $(NAME) -L ${PATH_LIBFT} -lft -L ${PATH_MLX} -lmlx -lXext -lX11 -lm
+			@$(CC) $(FLAGS) $(HEADER) $(OBJS) -o $(NAME) -L ${PATH_LIBFT} -lft -L ${PATH_MLX} -lmlx -lXext -lX11 -lm
 			@echo "$(_GREEN)Generating $(NAME)$(_NC)"
 
 clean:
