@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 16:31:31 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/06 19:29:31 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/07 10:50:09 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,13 @@ void	load_cub(t_global *cub, char *file)
 	}
 }
 
+static int game_loop(t_global *cub)
+{
+	update(cub, &cub->player);
+	render(cub);
+	return (0);
+}
+
 void	run_cub(t_global *cub)
 {
 	load_img(&cub->win);
@@ -62,7 +69,7 @@ void	run_cub(t_global *cub)
 	free_old_texture(cub, cub->nb_texture);
 	mlx_hook(cub->win.win_p, 2, 1L << 0, key_pressed, cub);
 	mlx_hook(cub->win.win_p, 3, 1L << 1, key_released, &cub->player);
-	mlx_loop_hook(cub->win.mlx_p, render, cub);
+	mlx_loop_hook(cub->win.mlx_p, game_loop, cub);
 	mlx_hook(cub->win.win_p, 33, 1L << 17, &end_cub, cub);
 	mlx_loop(cub->win.mlx_p);
 }

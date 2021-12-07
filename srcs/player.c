@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 16:31:38 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/03 14:39:23 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/07 10:48:33 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	init_player(t_player *player)
 	player->walk_d = 0;
 	player->lateral_d = 0;
 	player->rot_ang = 0;
-	player->mov_speed = 0.2;
-	player->rot_speed = 2 * (M_PI / 180);
+	player->mov_speed = 0.1;
+	player->rot_speed = 1.5 * (M_PI / 180);
 }
 
 void	update(t_global *cub, t_player *player)
