@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:06:33 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/07 10:12:10 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/07 12:55:28 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ static	void	fetch_arguments(char *line, t_global *g)
 	arg_count = 0;
 	line_split = ft_split(line, ' ');
 	arg_count = number_of_args(line_split);
-	if (arg_count == 1)
+	if (arg_count == 1 && !g->new_line)
 		append_error(g, line_split[0], " : not enough arguments\n");
-	if (arg_count > 2)
+	if (arg_count > 2 && !g->new_line)
 		append_error(g, line_split[0], " : too many arguments\n");
-	if (arg_count == 2)
+	if (arg_count == 2 && !g->new_line)
 		parse_line_paths(line_split, g);
 	if (g->valid_parameter_count == 6 && !g->in_map && !*line)
 	{
