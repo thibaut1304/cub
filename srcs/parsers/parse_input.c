@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:06:33 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/07 16:35:26 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/07 20:17:45 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ static	void	fetch_arguments_color(char *line, t_global *g, char *color)
 		return ;
 	}
 	line_split = ft_split_charset(line, " ,\t");
-	if (ft_strcmp(color, "F"))
+	if (ft_strcmp(color, "C"))
 		parse_rgb(color, line_split, &(g->data.floor), g);
-	else if (ft_strcmp(color, "C"))
+	else if (ft_strcmp(color, "F"))
 		parse_rgb(color, line_split, &(g->data.ceil), g);
 }
 

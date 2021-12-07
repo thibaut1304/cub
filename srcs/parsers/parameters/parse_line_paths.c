@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:06:17 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/07 16:16:18 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/07 20:16:21 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ static void	rgb_to_hex(char **rp, char *id, int *path_ptr, t_global *global)
 	int				b;
 
 	t = 0;
-	r = ft_atoi(rp[0]);
-	g = ft_atoi(rp[1]);
-	b = ft_atoi(rp[2]);
+	r = ft_atoi(rp[1]);
+	g = ft_atoi(rp[2]);
+	b = ft_atoi(rp[3]);
 	if (!(r >= 0 && r < 256 && g >= 0 && g < 256 && b >= 0 && b < 256))
 		append_error(global, id, " : valid RGB range is [0 - 255]\n");
 	if (*path_ptr == -1)

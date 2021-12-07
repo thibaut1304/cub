@@ -12,8 +12,8 @@ WE ./textures/metal.xpm
 
 
 
-C 0,   0,                 255
-F 255,0,,0
+C 255,255,255
+F 0,0,0
 EA                                       ./textures/stone.xpm
 
     11111111111111111111111111
