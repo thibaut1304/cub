@@ -26,4 +26,4 @@
 
 --> chercher testeur map
 
---> a regler probleme ceil et floor 255,,0,0 ne doit pas marcher 255, 0, 0 doit marcher
+--> a regler probleme ceil et floor 255,,0,0 ne doit pas marcher 255, 0, 0 doit marcher --> ok
