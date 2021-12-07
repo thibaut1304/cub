@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 11:05:16 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/07 11:20:27 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/07 13:35:29 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	check_end_file(int fd, int res)
 	while (res > 0)
 	{
 		res = get_next_line(fd, &line);
-		if (*line != '\0')
+		if (*line != '\0' || *line == '\t' || *line == 32)
 		{
 			free(line);
 			line = NULL;
