@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:06:49 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/03 17:17:17 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/07 16:36:12 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,21 @@ int	detect_map_line(char *line)
 		i++;
 	}
 	return (1);
+}
+
+int	count_sep_line(char *line)
+{
+	int	i;
+	int	x;
+
+	i = -1;
+	x = 0;
+	while (line[++i])
+	{
+		if (line[i] == ',')
+			x++;
+	}
+	if (x > 2)
+		return (1);
+	return (0);
 }
