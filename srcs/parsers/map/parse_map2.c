@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 11:05:16 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/07 10:09:27 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/07 11:20:27 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ void	process_map(t_global *g)
 		append_error(g, "", "Invalid map - wall missing\n");
 }
 
-int 	check_end_file(int fd, int res)
+int	check_end_file(int fd, int res)
 {
-	char 	*line;
+	char	*line;
 
 	line = NULL;
 	while (res > 0)

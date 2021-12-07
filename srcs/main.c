@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 16:31:31 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/07 10:50:09 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/07 11:20:03 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,6 @@ void	load_cub(t_global *cub, char *file)
 		ft_putstr("Cub3d is launching..\n");
 		run_cub(cub);
 	}
-}
-
-static int game_loop(t_global *cub)
-{
-	update(cub, &cub->player);
-	render(cub);
-	return (0);
 }
 
 void	run_cub(t_global *cub)

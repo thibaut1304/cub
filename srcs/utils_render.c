@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 16:32:15 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/03 15:41:29 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/07 11:19:32 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,11 @@ void	render_line(t_line *line, t_global *cub, int color)
 		delta.x += tmp.x;
 		delta.y += tmp.y;
 	}
+}
+
+int	game_loop(t_global *cub)
+{
+	update(cub, &cub->player);
+	render(cub);
+	return (0);
 }
