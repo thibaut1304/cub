@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:06:09 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/06 19:23:03 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/07 10:12:54 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ static void	recovery_map(t_global *g, char *line, t_list **list)
 {
 	t_list	*new_elem;
 
+	if (*line == '\0')
+		return ;
 	g->in_map = 1;
 	new_elem = ft_lstnew(ft_strdup(line));
 	ft_lstadd_back(list, new_elem);
@@ -29,20 +31,23 @@ static void	fetch_map(t_global *g, char *line, int fd, t_list **list)
 	while (res > 0)
 	{
 		res = get_next_line(fd, &line);
-		if (!detect_map_line(line) || *line == '\0')
+		if (!detect_map_line(line))
 		{
-			append_error(g, "", "Invalid map, wrong data\n");
-			free(line);
-			line = NULL;
-			break ;
+			if (*line != '\0')
+			{
+				append_error(g, "", "Invalid map, wrong data\n");
+				break ;
+			}
+			ft_del_line(line);
+			if (check_end_file(fd, res))
+				record_error(g, "Invalid map, wrong data\n");
+			close(fd);
+			return ;
 		}
-		if (*line != '\0' && detect_map_line(line))
-			recovery_map(g, line, list);
-		free(line);
-		line = NULL;
+		recovery_map(g, line, list);
+		ft_del_line(line);
 	}
-	free(line);
-	line = NULL;
+	ft_del_line(line);
 	close(fd);
 }
 

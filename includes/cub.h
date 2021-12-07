@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 16:29:46 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/06 17:34:18 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/07 10:12:08 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,6 +223,8 @@ int		is_in_charset(char c, char *charset);
 int		number_of_args(char **line);
 int		is_valid_file(char *file, char *str);
 void	preliminaire(t_global *g);
+int 	check_end_file(int fd, int res);
+void	ft_del_line(char *line);
 
 //cast_hz
 t_dcast	fill_hz_data(t_global *cub, t_ray *ray);

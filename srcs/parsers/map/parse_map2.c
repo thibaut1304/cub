@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 11:05:16 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/03 11:17:05 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/07 10:09:27 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,24 @@ void	process_map(t_global *g)
 	if (check_borders(g, g->number_rows, g->number_columns)
 		|| check_walls(g, g->number_rows, g->number_columns))
 		append_error(g, "", "Invalid map - wall missing\n");
+}
+
+int 	check_end_file(int fd, int res)
+{
+	char 	*line;
+
+	line = NULL;
+	while (res > 0)
+	{
+		res = get_next_line(fd, &line);
+		if (*line != '\0')
+		{
+			free(line);
+			line = NULL;
+			return (1);
+		}
+		free(line);
+		line = NULL;
+	}
+	return (0);
 }

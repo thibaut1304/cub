@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:06:33 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/06 18:28:08 by thhusser         ###   ########.fr       */
+/*   Updated: 2021/12/07 10:12:10 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	check_parameter_count_and_map(t_global *g)
 		append_error(g, "", "No map found\n");
 }
 
-static void	ft_del_line(char *line)
+void	ft_del_line(char *line)
 {
 	if (line)
 	{
