@@ -12,7 +12,7 @@
 
 -->supprimer 2 dans la map --> ok
 
--->verifier prototype cub
+-->verifier prototype cub --> ok
 
 --> object pfilo a la compilation makefile --> ok
 
@@ -24,6 +24,6 @@
 
 --> probleme dossier en parametre map --> ok
 
---> chercher testeur map
+--> chercher testeur map --> 184 / 184 leaks et parser
 
 --> a regler probleme ceil et floor 255,,0,0 ne doit pas marcher 255, 0, 0 doit marcher --> ok
