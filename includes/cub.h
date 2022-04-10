@@ -46,6 +46,13 @@
 # define FOV 1.04719755
 # define TEXT 5
 
+//MINIMAP
+# define MINIMAP_H	100
+# define MINIMAP_W	200
+# define CENTER_X	100
+# define CENTER_Y	50
+# define DIST_PER_PIXEL	0.15
+
 typedef struct s_pos
 {
 	float		x;
@@ -302,4 +309,5 @@ void	init_win(t_win *win);
 void	free_win(t_global *cub);
 void	load_win(t_win *win);
 
+void	render_2d(t_global *cub);
 #endif
