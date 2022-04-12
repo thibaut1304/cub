@@ -24,7 +24,9 @@ void	init_player(t_player *player)
 	player->rot_speed = 1.5 * (M_PI / 180);
 }
 
-int	mouse_move(const t_win * const win)
+/*printf("mouse get x: %d, y: %d. Turn: %c\n",
+	x, y, win->wid / 2 - x < 0 ? 'R' : 'L');*/
+int	mouse_move(const t_win *const win)
 {
 	int	x;
 	int	y;
@@ -32,9 +34,11 @@ int	mouse_move(const t_win * const win)
 	mlx_mouse_get_pos(win->mlx_p, win->win_p, &x, &y);
 	mlx_mouse_move(win->mlx_p, win->win_p, win->wid / 2, win->hei / 2);
 	if (x == win->wid / 2)
-		return 0;
-	printf("mouse get x: %d, y: %d. Turn: %c\n", x, y, win->wid / 2 - x < 0 ? 'R' : 'L');
-	return win->wid / 2 - x < 0 ? 1 : -1;
+		return (0);
+	if (win->wid / 2 - x < 0)
+		return (1);
+	else
+		return (-1);
 }
 
 void	update(t_global *cub, t_player *player)

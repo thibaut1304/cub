@@ -60,7 +60,8 @@ void	run_cub(t_global *cub)
 	load_img(&cub->win);
 	load_win(&cub->win);
 	free_old_texture(cub, cub->nb_texture);
-	mlx_mouse_move(cub->win.mlx_p, cub->win.win_p, cub->win.wid / 2, cub->win.hei / 2);
+	mlx_mouse_move(cub->win.mlx_p, cub->win.win_p,
+		cub->win.wid / 2, cub->win.hei / 2);
 	mlx_hook(cub->win.win_p, 2, 1L << 0, key_pressed, cub);
 	mlx_hook(cub->win.win_p, 3, 1L << 1, key_released, &cub->player);
 	mlx_loop_hook(cub->win.mlx_p, game_loop, cub);
