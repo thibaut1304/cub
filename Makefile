@@ -6,7 +6,7 @@
 #    By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/15 22:24:05 by thhusser          #+#    #+#              #
-#    Updated: 2021/12/07 15:03:22 by thhusser         ###   ########.fr        #
+#    Updated: 2022/04/13 14:55:45 by thhusser         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,30 +48,36 @@ SRCS_FILES	= \
 	
 SRCS_BONUS	= $(addprefix ./srcs_bonus/, ${SRCS_FILES_BONUS})
 SRCS_FILES_BONUS		= \
-				main.c \
-				render.c cast_hz.c cast_vt.c cast_ray.c \
-		  		utils.c key_events.c \
-		 		player.c texture.c grid.c \
-				images.c \
-				window.c utils_init.c \
-				utils_render.c \
-				error.c \
-				parsers/parse_input.c \
-				parsers/map/check_borders.c \
-				parsers/map/check_walls.c \
-				parsers/map/parse_map.c \
-				parsers/map/parse_map2.c \
-				parsers/parameters/parse_line_paths.c \
-				parsers/parameters/check_open_file.c \
-				utils/append_error.c \
-				utils/detect_line_map.c \
-				utils/ft_is_number.c \
-				utils/is_in_charset.c \
-				utils/number_of_args.c \
-				list_map.c \
-				utils/preli.c \
-				render_2d.c \
-				
+				main_bonus.c \
+				render_bonus.c \
+				cast_hz_bonus.c \
+				cast_vt_bonus.c \
+				cast_ray_bonus.c \
+				utils_bonus.c \
+				key_events_bonus.c \
+				player_bonus.c \
+				texture_bonus.c \
+				grid_bonus.c  \
+				images_bonus.c  \
+				window_bonus.c \
+				window.c_bonus.c  \
+				utils_render_bonus.c \
+				error_bonus.c \
+				parsers/parse_input_bonus.c \
+				parsers/map/check_borders_bonus.c  \
+				parsers/map/check_walls_bonus.c  \
+				parsers/map/parse_map_bonus.c \
+				parsers/map/parse_map2_bonus.c \
+				parsers/parameters/parse_line_paths_bonus.c \
+				parsers/parameters/check_open_file_bonus.c \
+				utils/append_error_bonus.c \
+				utils/detect_line_map_bonus.c \
+				utils/ft_is_number_bonus.c \
+				utils/is_in_charset_bonus.c  \
+				utils/number_of_args_bonus.c  \
+				list_map_bonus.c  \
+				utils/preli_bonus.c \
+				render_2d_bonus.c \
 
 CC			=	clang
 
