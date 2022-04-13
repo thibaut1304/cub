@@ -6,7 +6,7 @@
 #    By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/15 22:24:05 by thhusser          #+#    #+#              #
-#    Updated: 2022/04/13 15:11:32 by thhusser         ###   ########.fr        #
+#    Updated: 2022/04/13 15:50:30 by thhusser         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,7 @@ SRCS_FILES_BONUS		= \
 				grid_bonus.c  \
 				images_bonus.c  \
 				window_bonus.c \
-				window.c_bonus.c  \
+				utils_init_bonus.c  \
 				utils_render_bonus.c \
 				error_bonus.c \
 				parsers/parse_input_bonus.c \
@@ -109,7 +109,7 @@ $(NAME): 	${OBJS}
 bonus: 		${OBJS_BONUS}
 			@make -C libft/
 			@echo ""
-			@$(CC) $(FLAGS) $(HEADER) $(OBJS_BONUS) -o $(NAME)_bonus -L ${PATH_LIBFT} -lft -L ${PATH_MLX} -lmlx -lXext -lX11 -lm -g
+			@$(CC) $(FLAGS) $(HEADER) $(OBJS_BONUS) -o $(NAME)_bonus -L ${PATH_LIBFT} -lft -L ${PATH_MLX} -lmlx -lXext -lX11 -lm
 			@echo "$(_GREEN)Generating $(NAME)_bonus$(_NC)"
 
 clean:
