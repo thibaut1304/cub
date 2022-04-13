@@ -6,7 +6,7 @@
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:06:09 by thhusser          #+#    #+#             */
-/*   Updated: 2021/12/07 14:54:52 by thhusser         ###   ########.fr       */
+/*   Updated: 2022/04/13 14:13:23 by thhusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ static void	fetch_map(t_global *g, char *line, int fd, t_list **list)
 			return ;
 		}
 		recovery_map(g, line, list);
-		ft_del_line(line);
 	}
 	ft_del_line(line);
 	close(fd);
